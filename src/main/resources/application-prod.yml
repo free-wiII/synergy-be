@@ -1,8 +1,13 @@
 spring:
-  profiles:
-    default: prod
-  application:
-    title: Lovebird
-    version: 1.0.0
-  banner:
-    location: classpath:/app-banner.dat
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: ${RDS_HOST}
+    username: ${RDS_USERNAME}
+    password: ${RDS_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: none

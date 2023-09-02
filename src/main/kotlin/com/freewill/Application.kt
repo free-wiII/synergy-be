@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class FreeWillApplication
 
 fun main(args: Array<String>) {
-	runApplication<FreeWillApplication>(*args)
+    runApplication<FreeWillApplication>(*args)
 }

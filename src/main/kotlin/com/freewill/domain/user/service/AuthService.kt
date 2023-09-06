@@ -2,12 +2,12 @@ package com.freewill.domain.user.service
 
 import com.freewill.domain.user.dto.param.OAuth2Param
 import com.freewill.domain.user.dto.request.AuthRequest
-import com.freewill.domain.user.entity.User
 import com.freewill.security.jwt.dto.JwtToken
 import com.freewill.security.jwt.util.JwtProvider
 import com.freewill.security.oauth.service.AppleAuthService
 import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
+
 import org.springframework.stereotype.Service
 
 @Service

@@ -9,7 +9,7 @@ data class ApiResponse<T>(
         private val successStatus: String = "SUCCESS"
         private val failStatus: String = "FAIL"
 
-        fun <T> createSuccessWithData(message: String, data: T?= null): ApiResponse<T> {
+        fun <T> createSuccessWithData(message: String, data: T? = null): ApiResponse<T> {
             return ApiResponse<T>(successStatus, message, data)
         }
 
@@ -17,7 +17,7 @@ data class ApiResponse<T>(
             return createSuccessWithData(message)
         }
 
-        fun <T> createFailWithData(message: String, data: T?= null): ApiResponse<T> {
+        fun <T> createFailWithData(message: String, data: T? = null): ApiResponse<T> {
             return ApiResponse<T>(failStatus, message, data)
         }
 
@@ -25,6 +25,4 @@ data class ApiResponse<T>(
             return createFailWithData(message)
         }
     }
-
 }
-

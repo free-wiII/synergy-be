@@ -1,16 +1,9 @@
 package com.freewill.security.oauth.service
 
 import com.fasterxml.jackson.core.JsonProcessingException
-import com.freewill.domain.user.dto.param.OAuth2Param
-import com.freewill.domain.user.dto.request.AuthRequest
-import com.freewill.domain.user.entity.User
-import com.freewill.domain.user.entity.enums.Provider
-import com.freewill.domain.user.service.UserService
 import com.freewill.security.jwt.util.JwtValidator
 import com.freewill.security.oauth.client.AppleAuthClient
 import com.freewill.security.oauth.util.ApplePublicKeyGenerator
-import com.freewill.security.oauth.util.PrincipalUser
-import com.freewill.security.oauth.util.PrincipalUserConverter
 
 import org.springframework.stereotype.Service
 

@@ -22,9 +22,8 @@ class AuthController(private val authService: AuthService) {
         )
     }
 
-    @PostMapping("/sign-up/kakao")
-    fun signUpByKakao(@RequestBody authRequest: AuthRequest) {
-
-    }
-
+//    @PostMapping("/sign-up/kakao")
+//    fun signUpByKakao(@RequestBody authRequest: AuthRequest) {
+//        return
+//    }
 }

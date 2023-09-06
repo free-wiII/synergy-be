@@ -1,5 +1,6 @@
 package com.freewill.domain.user.entity
 
+import com.freewill.domain.user.dto.param.OAuth2Param
 import com.freewill.domain.user.entity.enums.Provider
 import com.freewill.domain.user.entity.enums.Role
 import com.freewill.global.audit.AuditEntity
@@ -19,6 +20,8 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.Table
 import org.hibernate.annotations.DynamicUpdate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 
 @Entity
 @Table(name = "users")
@@ -33,36 +36,40 @@ class User(
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null
+    val id: Long? = null
 
     @Column(name = "provider", nullable = false)
     @Enumerated(EnumType.STRING)
-    private val provider: Provider = provider
+    val provider: Provider = provider
 
     @Column(name = "provider_id", nullable = false)
-    private val providerId: String = providerId
+    val providerId: String = providerId
 
     @Column(name = "provider_nickname", nullable = false)
-    private val providerNickname: String = providerNickname
+    val providerNickname: String = providerNickname
 
     @Column(name = "provider_email")
-    private val providerEmail: String? = providerEmail
+    val providerEmail: String? = providerEmail
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")])
     @Column(name = "role")
-    private val role: List<Role> = listOf(Role.ROLE_USER)
+    val role: List<Role> = listOf(Role.ROLE_USER)
 
     @Embedded
-    private var auditEntity: AuditEntity = AuditEntity()
+    var auditEntity: AuditEntity = AuditEntity()
 
-    /* Erase comment after setting Spring Security
-     *
+    constructor(oAuth2Param: OAuth2Param) : this(
+        provider = oAuth2Param.provider,
+        providerId = oAuth2Param.providerId,
+        providerNickname = oAuth2Param.providerNickname,
+        providerEmail = oAuth2Param.providerEmail
+    )
+
     fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         return role.stream()
             .map { SimpleGrantedAuthority(it.name) }
             .toList()
     }
-     */
 }

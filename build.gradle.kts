@@ -82,9 +82,16 @@ dependencies {
     kapt("jakarta.annotation:jakarta.annotation-api")
     kapt("jakarta.persistence:jakarta.persistence-api")
 
+    // WebFlux
+    implementation("org.springframework.boot:spring-boot-starter-webflux:3.1.2")
+
     // database
     runtimeOnly("com.h2database:h2")
-    implementation("org.mariadb.jdbc:mariadb-java-client:3.1.4")
+    implementation("com.mysql:mysql-connector-j:8.1.0")
+
+    // Security
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")

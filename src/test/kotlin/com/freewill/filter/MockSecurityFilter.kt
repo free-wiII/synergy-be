@@ -1,17 +1,18 @@
 package com.freewill.filter
 
-
 import com.freewill.domain.user.entity.User
 import com.freewill.domain.user.entity.enums.Provider
 import com.freewill.security.oauth.util.PrincipalUser
-
-import jakarta.servlet.*
-
+import jakarta.servlet.Filter
+import jakarta.servlet.FilterChain
+import jakarta.servlet.FilterConfig
+import jakarta.servlet.ServletException
+import jakarta.servlet.ServletRequest
+import jakarta.servlet.ServletResponse
 import org.springframework.mock.web.MockHttpServletRequest
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContext
 import org.springframework.security.core.context.SecurityContextHolder
-
 import java.io.IOException
 import java.lang.reflect.Field
 

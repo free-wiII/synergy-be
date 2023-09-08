@@ -1,4 +1,4 @@
-package com.freewill.security.oauth.dto.key
+package com.freewill.security.oauth.key
 
 data class OidcPublicKey(
     val kid: String,

@@ -174,6 +174,7 @@ tasks.withType<JacocoCoverageVerification> {
                 "com.freewill.domain.**.controller.**",
                 "com.freewill.config.**",
                 "com.freewill.global.**",
+                "com.freewill.security.**"
             )
         }
     }

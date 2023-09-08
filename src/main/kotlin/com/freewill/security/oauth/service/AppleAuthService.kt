@@ -4,16 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException
 import com.freewill.security.jwt.util.JwtValidator
 import com.freewill.security.oauth.client.AppleAuthClient
 import com.freewill.security.oauth.util.ApplePublicKeyGenerator
-
 import org.springframework.stereotype.Service
-
 import java.security.NoSuchAlgorithmException
 import java.security.PublicKey
 import java.security.spec.InvalidKeySpecException
 import javax.naming.AuthenticationException
-
-import kotlin.String
-import kotlin.Throws
 
 @Service
 class AppleAuthService(

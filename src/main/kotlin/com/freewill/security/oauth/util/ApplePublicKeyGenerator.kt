@@ -1,7 +1,7 @@
 package com.freewill.security.oauth.util
 
-import com.freewill.security.oauth.dto.key.OidcPublicKey
-import com.freewill.security.oauth.dto.key.OidcPublicKeyResponse
+import com.freewill.security.oauth.key.OidcPublicKey
+import com.freewill.security.oauth.key.OidcPublicKeyResponse
 import org.springframework.stereotype.Component
 import java.math.BigInteger
 import java.security.KeyFactory

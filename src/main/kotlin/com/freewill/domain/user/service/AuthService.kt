@@ -7,7 +7,6 @@ import com.freewill.security.jwt.util.JwtProvider
 import com.freewill.security.oauth.service.AppleAuthService
 import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
-
 import org.springframework.stereotype.Service
 
 @Service

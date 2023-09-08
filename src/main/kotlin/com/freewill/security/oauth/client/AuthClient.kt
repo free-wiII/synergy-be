@@ -1,6 +1,6 @@
 package com.freewill.security.oauth.client
 
-import com.freewill.security.oauth.dto.key.OidcPublicKeyResponse
+import com.freewill.security.oauth.key.OidcPublicKeyResponse
 
 interface AuthClient {
     fun getPublicKeys(): OidcPublicKeyResponse

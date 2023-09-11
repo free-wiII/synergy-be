@@ -8,3 +8,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+oauth2:
+  kakao:
+    user-info-uri: https://kapi.kakao.com/v1/oidc/userinfo
+    id-token-info: https://kauth.kakao.com/oauth/tokeninfo
+    public-key-info: https://kauth.kakao.com/.well-known/jwks.json
+    app-key: test
+  apple:
+    public-key-url: https://appleid.apple.com/auth/keys
+
+jwt:
+  access-header: Authorization
+  refresh-header: Refresh
+  secret: testestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestest

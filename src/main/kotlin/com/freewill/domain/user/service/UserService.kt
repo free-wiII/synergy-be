@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 class UserService(private val userRepository: UserRepository) {
     @Transactional
     fun save(oAuth2Param: OAuth2Param): User {
-        return User(oAuth2Param)
+        return userRepository.save(User(oAuth2Param))
     }
 
     @Transactional(readOnly = true)

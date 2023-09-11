@@ -14,16 +14,11 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1/auth")
 class AuthController(private val authService: AuthService) {
 
-    @PostMapping("/sign-up/apple")
-    fun signUpByApple(@RequestBody authRequest: AuthRequest): ApiResponse<AuthResponse> {
+    @PostMapping("/sign-up")
+    fun signUp(@RequestBody authRequest: AuthRequest): ApiResponse<AuthResponse> {
         return ApiResponse.createSuccessWithData(
             AuthResponseMessage.SUCCESS_AUTHORIZE.msg,
-            authService.signUpByApple(authRequest).toAuthResponse()
+            authService.signUp(authRequest).toAuthResponse()
         )
     }
-
-//    @PostMapping("/sign-up/kakao")
-//    fun signUpByKakao(@RequestBody authRequest: AuthRequest) {
-//        return
-//    }
 }

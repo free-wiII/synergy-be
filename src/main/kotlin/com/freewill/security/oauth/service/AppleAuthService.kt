@@ -15,14 +15,14 @@ class AppleAuthService(
     private val appleAuthClient: AppleAuthClient,
     private val applePublicKeyGenerator: ApplePublicKeyGenerator,
     private val jwtValidator: JwtValidator
-) {
+) : SocialAuthService {
     @Throws(
         JsonProcessingException::class,
         AuthenticationException::class,
         NoSuchAlgorithmException::class,
         InvalidKeySpecException::class
     )
-    fun getProviderId(idToken: String): String {
+    override fun getProviderId(idToken: String): String {
         val headers: Map<String, String> = jwtValidator.parseHeaders(idToken)
         val publicKey: PublicKey = applePublicKeyGenerator.generatePublicKey(
             headers,

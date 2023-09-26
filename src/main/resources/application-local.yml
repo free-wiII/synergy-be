@@ -4,25 +4,24 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3306/free-will
+    url: jdbc:mysql://localhost:3306/synergy
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 
 oauth2:
+  google:
+    client-id: ${GOOGLE_CLIENT_ID}
   kakao:
-    user-info-uri: https://kapi.kakao.com/v1/oidc/userinfo
-    id-token-info: https://kauth.kakao.com/oauth/tokeninfo
     public-key-info: https://kauth.kakao.com/.well-known/jwks.json
-    app-key: ${KAKAO_APP_KEY}
   apple:
     public-key-url: https://appleid.apple.com/auth/keys
 
 jwt:
   access-header: Authorization
   refresh-header: Refresh
-  secret: locallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocallocal
+  secret: localocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocal

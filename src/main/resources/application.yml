@@ -2,7 +2,7 @@ spring:
   profiles:
     default: prod
   application:
-    title: Free-Will
+    title: Synergy
     version: 1.0.0
   banner:
     location: classpath:/app-banner.dat

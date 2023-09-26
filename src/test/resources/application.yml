@@ -1,8 +1,21 @@
 spring:
-  profiles:
-    default: prod
-  application:
-    title: Free-Will
-    version: 1.0.0
-  banner:
-    location: classpath:/app-banner.dat
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: test
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+oauth2:
+  kakao:
+    public-key-info: https://kauth.kakao.com/.well-known/jwks.json
+  apple:
+    public-key-url: https://appleid.apple.com/auth/keys
+
+jwt:
+  access-header: Authorization
+  refresh-header: Refresh
+  secret: testestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestest

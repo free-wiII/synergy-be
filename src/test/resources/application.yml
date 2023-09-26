@@ -10,6 +10,8 @@ spring:
       ddl-auto: create-drop
 
 oauth2:
+  google:
+    client-id: clientId
   kakao:
     public-key-info: https://kauth.kakao.com/.well-known/jwks.json
   apple:

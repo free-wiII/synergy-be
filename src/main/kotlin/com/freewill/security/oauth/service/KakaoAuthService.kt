@@ -30,5 +30,4 @@ class KakaoAuthService(
         )
         return jwtValidator.getTokenClaims(idToken, publicKey)?.subject ?: throw AuthenticationException()
     }
-
 }

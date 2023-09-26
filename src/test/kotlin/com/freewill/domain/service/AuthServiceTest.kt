@@ -8,7 +8,7 @@ import com.freewill.domain.user.service.AuthService
 import com.freewill.domain.user.service.UserService
 import com.freewill.security.jwt.dto.JwtToken
 import com.freewill.security.jwt.util.JwtProvider
-import com.freewill.security.oauth.service.AuthServiceFactory
+import com.freewill.security.oauth.factory.AuthServiceFactory
 import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
 import org.junit.jupiter.api.Assertions.assertEquals

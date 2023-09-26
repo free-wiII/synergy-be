@@ -1,7 +1,5 @@
-package com.freewill.security.oauth.util
+package com.freewill.security.oauth.key
 
-import com.freewill.security.oauth.key.OidcPublicKey
-import com.freewill.security.oauth.key.OidcPublicKeyResponse
 import org.springframework.stereotype.Component
 import java.math.BigInteger
 import java.security.KeyFactory
@@ -13,7 +11,7 @@ import java.util.Base64
 import javax.naming.AuthenticationException
 
 @Component
-class ApplePublicKeyGenerator {
+class PublicKeyGenerator {
     @Throws(AuthenticationException::class, NoSuchAlgorithmException::class, InvalidKeySpecException::class)
     fun generatePublicKey(
         tokenHeaders: Map<String, String>,

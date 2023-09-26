@@ -3,7 +3,7 @@ package com.freewill.security.oauth.service
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.freewill.security.jwt.util.JwtValidator
 import com.freewill.security.oauth.client.AppleAuthClient
-import com.freewill.security.oauth.util.ApplePublicKeyGenerator
+import com.freewill.security.oauth.key.PublicKeyGenerator
 import org.springframework.stereotype.Service
 import java.security.NoSuchAlgorithmException
 import java.security.PublicKey
@@ -13,7 +13,7 @@ import javax.naming.AuthenticationException
 @Service
 class AppleAuthService(
     private val appleAuthClient: AppleAuthClient,
-    private val applePublicKeyGenerator: ApplePublicKeyGenerator,
+    private val applePublicKeyGenerator: PublicKeyGenerator,
     private val jwtValidator: JwtValidator
 ) : SocialAuthService {
     @Throws(

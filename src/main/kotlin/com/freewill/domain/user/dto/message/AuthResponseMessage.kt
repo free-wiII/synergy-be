@@ -1,5 +1,6 @@
 package com.freewill.domain.user.dto.message
 
 enum class AuthResponseMessage(val msg: String) {
-    SUCCESS_AUTHORIZE("인증에 성공하셨습니다.")
+    SUCCESS_SIGN_UP("회원 가입 성공"),
+    SUCCESS_SIGN_IN("로그인 성공")
 }

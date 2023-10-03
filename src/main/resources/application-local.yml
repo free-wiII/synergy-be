@@ -25,3 +25,16 @@ jwt:
   access-header: Authorization
   refresh-header: Refresh
   secret: localocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocalocal
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    s3-bucket: ${AWS_S3_BUCKET_NAME}
+    region:
+      static:
+        ap-northeast-2
+    stack:
+      auto:
+        false

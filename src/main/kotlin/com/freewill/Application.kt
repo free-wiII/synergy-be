@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class FreeWillApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<FreeWillApplication>(*args)
+    runApplication<Application>(*args)
 }

@@ -21,3 +21,16 @@ jwt:
   access-header: Authorization
   refresh-header: Refresh
   secret: testestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestest
+
+cloud:
+  aws:
+    credentials:
+      access-key: ''
+      secret-key: ''
+    s3-bucket: synergy-mock-s3
+    region:
+      static:
+        ap-northeast-2
+    stack:
+      auto:
+        false

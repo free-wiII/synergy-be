@@ -24,7 +24,7 @@ class JwtProvider(
         val accessToken = getToken(principalUser, claims, ACCESS_TOKEN_VALIDATION_SECOND)
         val refreshToken = getToken(principalUser, claims, REFRESH_TOKEN_VALIDATION_SECOND)
 
-        return JwtToken(accessToken, refreshToken, BEARER_TYPE)
+        return JwtToken(accessToken, refreshToken, principalUser.getUser(), BEARER_TYPE)
     }
 
     fun getClaims(principalUser: PrincipalUser): Claims {

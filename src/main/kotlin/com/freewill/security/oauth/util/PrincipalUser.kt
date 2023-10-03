@@ -14,6 +14,8 @@ class PrincipalUser(
     private val authorities: MutableCollection<out GrantedAuthority>,
 ) : UserDetails, OidcUser, OAuth2User {
 
+    fun getUser(): User = user
+
     override fun getName(): String = user.id.toString()
 
     override fun getAttributes(): MutableMap<String, Any> = attribute

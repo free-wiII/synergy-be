@@ -1,5 +1,8 @@
 package com.freewill.domain.profile.entity
 
+import com.freewill.domain.profile.dto.param.ProfileUpdateParam
+import com.freewill.domain.profile.dto.request.ProfileUpdateRequest
+import com.freewill.domain.profile.dto.response.ProfileDetailResponse
 import com.freewill.domain.user.entity.User
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -41,4 +44,14 @@ class Profile(
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private val user: User = user
+
+    fun update(request: ProfileUpdateParam) {
+        request.nickname?.let { this.nickname = it }
+    }
+
+    fun toProfileDetailResponse() = ProfileDetailResponse(
+        imageUri = imageUri,
+        nickname = nickname,
+        email = email
+    )
 }

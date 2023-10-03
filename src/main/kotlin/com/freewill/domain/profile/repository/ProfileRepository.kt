@@ -1,10 +1,11 @@
 package com.freewill.domain.profile.repository
 
 import com.freewill.domain.profile.entity.Profile
+import com.freewill.domain.user.entity.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 interface ProfileRepository : JpaRepository<Profile, Long> {
-    fun findByUserId(userId: Long): Profile?
+    fun findByUser(user: User): Profile?
 }

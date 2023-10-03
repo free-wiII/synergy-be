@@ -1,1 +1,1 @@
-rootProject.name = "free-will"
+rootProject.name = "synergy"

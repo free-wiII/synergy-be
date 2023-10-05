@@ -2,4 +2,4 @@ package com.freewill.global.common.annotation
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class AuthorizedUser()
+annotation class AuthorizedUser

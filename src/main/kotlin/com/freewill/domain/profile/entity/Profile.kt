@@ -1,7 +1,6 @@
 package com.freewill.domain.profile.entity
 
 import com.freewill.domain.profile.dto.param.ProfileUpdateParam
-import com.freewill.domain.profile.dto.request.ProfileUpdateRequest
 import com.freewill.domain.profile.dto.response.ProfileDetailResponse
 import com.freewill.domain.user.entity.User
 import jakarta.persistence.Column

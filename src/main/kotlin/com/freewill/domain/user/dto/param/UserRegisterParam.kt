@@ -6,6 +6,5 @@ import org.springframework.web.multipart.MultipartFile
 
 data class UserRegisterParam(
     val image: MultipartFile?,
-    val signUpRequest: SignUpRequest,
-    val profileCreateRequest: ProfileCreateRequest
+    val signUpRequest: SignUpRequest
 )

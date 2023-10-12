@@ -24,7 +24,7 @@ class Profile(
     user: User,
     imageUri: String?,
     nickname: String,
-    email: String,
+    email: String?,
 ) {
     @Id
     @Column(name = "profile_id")
@@ -38,7 +38,7 @@ class Profile(
     private var nickname: String = nickname
 
     @Column(name = "email")
-    private var email: String = email
+    private var email: String? = email
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")

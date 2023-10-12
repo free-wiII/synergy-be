@@ -24,9 +24,8 @@ class AuthController(private val authService: AuthService) {
     fun signUp(
         @RequestPart(value = "image", required = false) image: MultipartFile?,
         @RequestPart(value = "signUpRequest") signUpRequest: SignUpRequest,
-        @RequestPart(value = "profileCreateRequest") profileCreateRequest: ProfileCreateRequest
     ): ApiResponse<AuthResponse> {
-        val jwtToken: JwtToken = authService.register(UserRegisterParam(image, signUpRequest, profileCreateRequest))
+        val jwtToken: JwtToken = authService.register(UserRegisterParam(image, signUpRequest))
 
         return createSuccessWithData(
             AuthResponseMessage.SUCCESS_SIGN_UP.msg,

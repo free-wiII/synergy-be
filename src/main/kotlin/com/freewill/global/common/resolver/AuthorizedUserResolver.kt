@@ -14,8 +14,8 @@ import org.springframework.web.method.support.ModelAndViewContainer
 @Component
 class AuthorizedUserResolver : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {
-        return parameter.hasParameterAnnotation(AuthorizedUser::class.java)
-                && User::class.java.isAssignableFrom(parameter.parameterType)
+        return parameter.hasParameterAnnotation(AuthorizedUser::class.java) &&
+            User::class.java.isAssignableFrom(parameter.parameterType)
     }
 
     override fun resolveArgument(
@@ -24,7 +24,7 @@ class AuthorizedUserResolver : HandlerMethodArgumentResolver {
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?
     ): Any? {
-        val principalUser: PrincipalUser = SecurityContextHolder.getContext().authentication.principal as PrincipalUser;
+        val principalUser: PrincipalUser = SecurityContextHolder.getContext().authentication.principal as PrincipalUser
 
         return principalUser.getUser()
     }

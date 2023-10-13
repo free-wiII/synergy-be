@@ -39,8 +39,8 @@ class AuthService(
             ProfileCreateParam(
                 imageUri,
                 user,
-                param.profileCreateRequest.nickname,
-                param.profileCreateRequest.email
+                param.signUpRequest.name,
+                param.signUpRequest.email
             )
         )
 

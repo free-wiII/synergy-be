@@ -1,7 +1,6 @@
 package com.freewill.domain.profile.entity
 
 import com.freewill.domain.profile.dto.param.ProfileUpdateParam
-import com.freewill.domain.profile.dto.request.ProfileUpdateRequest
 import com.freewill.domain.profile.dto.response.ProfileDetailResponse
 import com.freewill.domain.user.entity.User
 import jakarta.persistence.Column
@@ -25,7 +24,7 @@ class Profile(
     user: User,
     imageUri: String?,
     nickname: String,
-    email: String,
+    email: String?,
 ) {
     @Id
     @Column(name = "profile_id")
@@ -39,7 +38,7 @@ class Profile(
     private var nickname: String = nickname
 
     @Column(name = "email")
-    private var email: String = email
+    private var email: String? = email
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
@@ -47,6 +46,7 @@ class Profile(
 
     fun update(request: ProfileUpdateParam) {
         request.nickname?.let { this.nickname = it }
+        request.email?.let { this.email = it }
     }
 
     fun toProfileDetailResponse() = ProfileDetailResponse(

@@ -7,7 +7,7 @@ data class ProfileCreateParam(
     val imageUri: String?,
     val user: User,
     val nickname: String,
-    val email: String
+    val email: String?
 ) {
     fun toProfileEntity(): Profile = Profile(user, imageUri, nickname, email)
 }

@@ -26,13 +26,10 @@ class MockSecurityFilter : Filter {
         chain: FilterChain
     ) {
         val context: SecurityContext = SecurityContextHolder.getContext()
-        val principalUser = PrincipalUser(createMember(), mutableMapOf(), mutableListOf())
-        val authentication = UsernamePasswordAuthenticationToken(
-            principalUser, principalUser.password,
-            principalUser.authorities
-        )
 
-        context.authentication = authentication
+        val principalUser = PrincipalUser(createMember(), mutableMapOf())
+        context.authentication = UsernamePasswordAuthenticationToken(principalUser, "", principalUser.authorities)
+
         chain.doFilter(request, response)
     }
 

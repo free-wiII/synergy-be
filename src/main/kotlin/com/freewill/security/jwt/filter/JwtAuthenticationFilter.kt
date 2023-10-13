@@ -1,5 +1,6 @@
 package com.freewill.security.jwt.filter
 
+import com.freewill.global.common.exception.BearerSuffixNotExistsException
 import com.freewill.security.jwt.util.JwtValidator
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
@@ -19,9 +20,6 @@ class JwtAuthenticationFilter(
     @Value("\${jwt.access-header}")
     private lateinit var accessHeader: String
 
-    @Value("\${jwt.refresh-header}")
-    private lateinit var refreshHeader: String
-
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(
         request: HttpServletRequest,
@@ -30,7 +28,9 @@ class JwtAuthenticationFilter(
     ) {
         val token: String? = getTokensFromHeader(request, accessHeader)
         token?.let {
-            val authentication: Authentication = jwtValidator.getAuthentication(it)
+            val accessToken = replaceBearerToBlank(it)
+
+            val authentication: Authentication = jwtValidator.getAuthentication(accessToken)
             SecurityContextHolder.getContext().authentication = authentication
         }
 
@@ -39,5 +39,13 @@ class JwtAuthenticationFilter(
 
     private fun getTokensFromHeader(request: HttpServletRequest, header: String): String? {
         return request.getHeader(header)
+    }
+
+    private fun replaceBearerToBlank(token: String): String {
+        return if (!token.startsWith("Bearer ")) {
+            throw BearerSuffixNotExistsException()
+        } else {
+            token.replace("Bearer ", "")
+        }
     }
 }

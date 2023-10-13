@@ -1,6 +1,5 @@
 package com.freewill.domain.user.controller
 
-import com.freewill.domain.profile.dto.request.ProfileCreateRequest
 import com.freewill.domain.user.dto.message.AuthResponseMessage
 import com.freewill.domain.user.dto.param.UserRegisterParam
 import com.freewill.domain.user.dto.request.SignInRequest

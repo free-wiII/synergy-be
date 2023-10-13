@@ -20,8 +20,6 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.Table
 import org.hibernate.annotations.DynamicUpdate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.authority.SimpleGrantedAuthority
 
 @Entity
 @Table(name = "users")
@@ -66,10 +64,4 @@ class User(
         providerNickname = oAuth2Param.providerNickname,
         providerEmail = oAuth2Param.providerEmail
     )
-
-    fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return role.stream()
-            .map { SimpleGrantedAuthority(it.name) }
-            .toList()
-    }
 }

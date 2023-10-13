@@ -42,11 +42,10 @@ class JwtAuthenticationFilter(
     }
 
     private fun replaceBearerToBlank(token: String): String {
-        return if(!token.startsWith("Bearer ")) {
+        return if (!token.startsWith("Bearer ")) {
             throw BearerSuffixNotExistsException()
         } else {
             token.replace("Bearer ", "")
         }
     }
-
 }

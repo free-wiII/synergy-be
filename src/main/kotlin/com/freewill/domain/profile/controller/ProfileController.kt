@@ -34,7 +34,7 @@ class ProfileController(
         @AuthorizedUser user: User,
         @RequestPart(value = "image", required = false) image: MultipartFile?,
         @RequestPart(value = "profileUpdateRequest", required = false) request: ProfileUpdateRequest?
-    ): ApiResponse<Long> {
+    ): ApiResponse<Void> {
         profileService.update(user, ProfileUpdateParam(image, request?.nickname, request?.email))
 
         return createSuccessWithData(ProfileResponseMessage.SUCCESS_UPDATE_PROFILE.msg)

@@ -64,7 +64,7 @@ class AuthServiceTest {
         user = User(oAuth2Param)
         ReflectionTestUtils.setField(user, "id", 1L)
 
-        principalUser = PrincipalUser(user, mutableMapOf("id" to user.id!!), user.getAuthorities())
+        principalUser = PrincipalUser(user, mutableMapOf("id" to user.id!!))
 
         jwtToken = JwtToken("Access Token", "Refresh Token", user, "Bearer")
     }

@@ -1,8 +1,5 @@
-package com.freewill.domain.guestbook.entity
+package com.freewill.entity
 
-import com.freewill.domain.cafe.entity.Cafe
-import com.freewill.domain.review.entity.Review
-import com.freewill.entity.User
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners

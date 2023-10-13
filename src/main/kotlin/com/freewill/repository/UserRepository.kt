@@ -1,4 +1,4 @@
-package com.freewill.domain.user.repository
+package com.freewill.repository
 
 import com.freewill.entity.User
 import org.springframework.data.jpa.repository.JpaRepository

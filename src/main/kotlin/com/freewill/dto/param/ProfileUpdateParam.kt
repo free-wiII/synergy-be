@@ -1,4 +1,4 @@
-package com.freewill.domain.profile.dto.param
+package com.freewill.dto.param
 
 import org.springframework.web.multipart.MultipartFile
 

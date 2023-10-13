@@ -1,8 +1,7 @@
-package com.freewill.domain.profile.entity
+package com.freewill.entity
 
-import com.freewill.domain.profile.dto.param.ProfileUpdateParam
-import com.freewill.domain.profile.dto.response.ProfileDetailResponse
-import com.freewill.entity.User
+import com.freewill.dto.param.ProfileUpdateParam
+import com.freewill.dto.response.ProfileDetailResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners

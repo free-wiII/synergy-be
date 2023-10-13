@@ -1,4 +1,4 @@
-package com.freewill.domain.profile.dto.request
+package com.freewill.dto.request
 
 data class ProfileCreateRequest(
     val nickname: String,

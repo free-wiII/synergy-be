@@ -1,4 +1,4 @@
-package com.freewill.domain.user.dto.response
+package com.freewill.dto.response
 
 data class AuthResponse(
     val accessToken: String,

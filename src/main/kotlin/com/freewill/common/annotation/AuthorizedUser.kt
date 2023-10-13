@@ -1,4 +1,4 @@
-package com.freewill.global.common.annotation
+package com.freewill.common.annotation
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)

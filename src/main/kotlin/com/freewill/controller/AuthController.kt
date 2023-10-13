@@ -1,11 +1,11 @@
-package com.freewill.domain.user.controller
+package com.freewill.controller
 
-import com.freewill.domain.user.dto.message.AuthResponseMessage
-import com.freewill.domain.user.dto.param.UserRegisterParam
-import com.freewill.domain.user.dto.request.SignInRequest
-import com.freewill.domain.user.dto.request.SignUpRequest
-import com.freewill.domain.user.dto.response.AuthResponse
-import com.freewill.domain.user.service.AuthService
+import com.freewill.enums.ResponseMessage
+import com.freewill.dto.param.UserRegisterParam
+import com.freewill.dto.request.SignInRequest
+import com.freewill.dto.request.SignUpRequest
+import com.freewill.dto.response.AuthResponse
+import com.freewill.service.AuthService
 import com.freewill.common.response.ApiResponse
 import com.freewill.common.response.ApiResponse.Companion.createSuccessWithData
 import com.freewill.security.jwt.dto.JwtToken
@@ -27,7 +27,7 @@ class AuthController(private val authService: AuthService) {
         val jwtToken: JwtToken = authService.register(UserRegisterParam(image, signUpRequest))
 
         return createSuccessWithData(
-            AuthResponseMessage.SUCCESS_SIGN_UP.msg,
+            ResponseMessage.SUCCESS_SIGN_UP.msg,
             jwtToken.toAuthResponse()
         )
     }
@@ -35,7 +35,7 @@ class AuthController(private val authService: AuthService) {
     @PostMapping("/sign-in")
     fun signIn(@RequestBody request: SignInRequest): ApiResponse<AuthResponse> {
         return createSuccessWithData(
-            AuthResponseMessage.SUCCESS_SIGN_IN.msg,
+            ResponseMessage.SUCCESS_SIGN_IN.msg,
             authService.signIn(request).toAuthResponse()
         )
     }

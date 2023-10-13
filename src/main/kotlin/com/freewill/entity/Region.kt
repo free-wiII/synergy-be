@@ -1,6 +1,6 @@
-package com.freewill.domain.region.entity
+package com.freewill.entity
 
-import com.freewill.domain.cafe.entity.Cafe
+import com.freewill.entity.Cafe
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners

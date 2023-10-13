@@ -1,4 +1,4 @@
-package com.freewill.domain.profile.dto.response
+package com.freewill.dto.response
 
 data class ProfileDetailResponse(
     val imageUri: String?,

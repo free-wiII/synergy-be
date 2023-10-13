@@ -1,3 +1,3 @@
-package com.freewill.domain.profile.dto.request
+package com.freewill.dto.request
 
 data class ProfileUpdateRequest(val nickname: String?, val email: String?)

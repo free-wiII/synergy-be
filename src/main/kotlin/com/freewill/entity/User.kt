@@ -1,9 +1,9 @@
-package com.freewill.domain.user.entity
+package com.freewill.entity
 
-import com.freewill.domain.user.dto.param.OAuth2Param
-import com.freewill.domain.user.entity.enums.Provider
-import com.freewill.domain.user.entity.enums.Role
-import com.freewill.global.audit.AuditEntity
+import com.freewill.dto.param.OAuth2Param
+import com.freewill.enums.Provider
+import com.freewill.enums.Role
+import com.freewill.entity.audit.AuditEntity
 import jakarta.persistence.CollectionTable
 import jakarta.persistence.Column
 import jakarta.persistence.ElementCollection

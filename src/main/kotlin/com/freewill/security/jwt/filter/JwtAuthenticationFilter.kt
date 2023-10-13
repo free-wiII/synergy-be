@@ -1,6 +1,6 @@
 package com.freewill.security.jwt.filter
 
-import com.freewill.global.common.exception.BearerSuffixNotExistsException
+import com.freewill.common.exception.BearerSuffixNotExistsException
 import com.freewill.security.jwt.util.JwtValidator
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException

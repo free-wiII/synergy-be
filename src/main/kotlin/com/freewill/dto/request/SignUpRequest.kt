@@ -1,6 +1,6 @@
-package com.freewill.domain.user.dto.request
+package com.freewill.dto.request
 
-import com.freewill.domain.user.dto.param.OAuth2Param
+import com.freewill.dto.param.OAuth2Param
 import com.freewill.enums.Provider
 
 data class SignUpRequest(

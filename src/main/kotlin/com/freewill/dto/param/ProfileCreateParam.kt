@@ -1,4 +1,4 @@
-package com.freewill.domain.profile.dto.param
+package com.freewill.dto.param
 
 import com.freewill.entity.Profile
 import com.freewill.entity.User

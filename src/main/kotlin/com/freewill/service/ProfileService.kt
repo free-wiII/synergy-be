@@ -1,12 +1,12 @@
-package com.freewill.domain.profile.service
+package com.freewill.service
 
-import com.freewill.domain.profile.dto.param.ProfileCreateParam
-import com.freewill.domain.profile.dto.param.ProfileUpdateParam
-import com.freewill.domain.profile.entity.Profile
-import com.freewill.domain.profile.repository.ProfileRepository
+import com.freewill.dto.param.ProfileCreateParam
+import com.freewill.dto.param.ProfileUpdateParam
+import com.freewill.entity.Profile
+import com.freewill.repository.ProfileRepository
 import com.freewill.entity.User
-import com.freewill.global.s3.S3Uploader
-import com.freewill.global.s3.dto.S3UploadRequest
+import com.freewill.s3.S3Uploader
+import com.freewill.s3.dto.S3UploadRequest
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

@@ -1,4 +1,4 @@
-package com.freewill.global.s3.dto
+package com.freewill.s3.dto
 
 import org.springframework.web.multipart.MultipartFile
 

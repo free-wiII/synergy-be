@@ -1,4 +1,4 @@
-package com.freewill.domain.user.dto.param
+package com.freewill.dto.param
 
 import com.freewill.enums.Provider
 

@@ -1,13 +1,12 @@
-package com.freewill.domain.user.service
+package com.freewill.service
 
-import com.freewill.domain.profile.dto.param.ProfileCreateParam
-import com.freewill.domain.profile.service.ProfileService
-import com.freewill.domain.user.dto.param.UserRegisterParam
-import com.freewill.domain.user.dto.request.SignInRequest
-import com.freewill.domain.user.dto.request.SignUpRequest
+import com.freewill.dto.param.ProfileCreateParam
+import com.freewill.dto.param.UserRegisterParam
+import com.freewill.dto.request.SignInRequest
+import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User
-import com.freewill.global.s3.S3Uploader
-import com.freewill.global.s3.dto.S3UploadRequest
+import com.freewill.s3.S3Uploader
+import com.freewill.s3.dto.S3UploadRequest
 import com.freewill.security.jwt.dto.JwtToken
 import com.freewill.security.jwt.util.JwtProvider
 import com.freewill.security.oauth.factory.AuthServiceFactory

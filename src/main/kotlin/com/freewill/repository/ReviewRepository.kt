@@ -1,6 +1,6 @@
-package com.freewill.domain.review.repository
+package com.freewill.repository
 
-import com.freewill.domain.review.entity.Review
+import com.freewill.entity.Review
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

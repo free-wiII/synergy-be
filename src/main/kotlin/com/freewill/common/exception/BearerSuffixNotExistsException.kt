@@ -1,3 +1,3 @@
-package com.freewill.global.common.exception
+package com.freewill.common.exception
 
 class BearerSuffixNotExistsException : RuntimeException()

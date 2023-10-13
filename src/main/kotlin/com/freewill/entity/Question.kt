@@ -1,4 +1,4 @@
-package com.freewill.domain.question.entity
+package com.freewill.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

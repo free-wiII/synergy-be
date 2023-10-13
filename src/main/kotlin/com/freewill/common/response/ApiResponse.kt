@@ -1,4 +1,4 @@
-package com.freewill.global.common.response
+package com.freewill.common.response
 
 data class ApiResponse<T>(
     val status: String,

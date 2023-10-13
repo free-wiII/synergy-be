@@ -1,7 +1,7 @@
-package com.freewill.domain.review.entity
+package com.freewill.entity
 
-import com.freewill.domain.guestbook.entity.Guestbook
-import com.freewill.domain.question.entity.Question
+import com.freewill.entity.Guestbook
+import com.freewill.entity.Question
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType

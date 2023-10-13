@@ -1,7 +1,7 @@
-package com.freewill.global.common.resolver
+package com.freewill.resolver
 
-import com.freewill.domain.user.entity.User
-import com.freewill.global.common.annotation.AuthorizedUser
+import com.freewill.entity.User
+import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.security.oauth.util.PrincipalUser
 import org.springframework.core.MethodParameter
 import org.springframework.security.core.context.SecurityContextHolder

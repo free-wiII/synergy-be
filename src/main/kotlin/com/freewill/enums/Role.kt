@@ -1,4 +1,4 @@
-package com.freewill.domain.user.entity.enums
+package com.freewill.enums
 
 enum class Role {
     ROLE_USER,

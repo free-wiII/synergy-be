@@ -1,4 +1,4 @@
-package com.freewill.global.audit
+package com.freewill.entity.audit
 
 import jakarta.persistence.Embeddable
 import org.springframework.data.annotation.CreatedDate

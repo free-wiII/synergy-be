@@ -1,4 +1,4 @@
-package com.freewill.domain.user.dto.request
+package com.freewill.dto.request
 
 import com.freewill.enums.Provider
 

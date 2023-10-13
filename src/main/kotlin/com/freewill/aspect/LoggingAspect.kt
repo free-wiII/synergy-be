@@ -1,4 +1,4 @@
-package com.freewill.global.aspect
+package com.freewill.aspect
 
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.AfterReturning

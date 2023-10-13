@@ -1,4 +1,4 @@
-package com.freewill.domain.user.dto.message
+package com.freewill.enums
 
 enum class ResponseMessage(val msg: String) {
     SUCCESS_SIGN_UP("회원 가입 성공"),

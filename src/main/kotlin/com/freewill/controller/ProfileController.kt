@@ -1,14 +1,14 @@
-package com.freewill.domain.profile.controller
+package com.freewill.controller
 
-import com.freewill.domain.profile.dto.message.ProfileResponseMessage
-import com.freewill.domain.profile.dto.param.ProfileUpdateParam
-import com.freewill.domain.profile.dto.request.ProfileUpdateRequest
-import com.freewill.domain.profile.dto.response.ProfileDetailResponse
-import com.freewill.domain.profile.service.ProfileService
+import com.freewill.dto.param.ProfileUpdateParam
+import com.freewill.dto.request.ProfileUpdateRequest
+import com.freewill.dto.response.ProfileDetailResponse
+import com.freewill.service.ProfileService
 import com.freewill.entity.User
 import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.common.response.ApiResponse.Companion.createSuccessWithData
+import com.freewill.enums.ResponseMessage
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,7 +24,7 @@ class ProfileController(
     @GetMapping
     fun searchProfile(@AuthorizedUser user: User): ApiResponse<ProfileDetailResponse> {
         return createSuccessWithData(
-            ProfileResponseMessage.SUCCESS_SEARCH_PROFILE.msg,
+            ResponseMessage.SUCCESS_SEARCH_PROFILE.msg,
             profileService.findByUser(user).toProfileDetailResponse()
         )
     }
@@ -37,6 +37,6 @@ class ProfileController(
     ): ApiResponse<Void> {
         profileService.update(user, ProfileUpdateParam(image, request?.nickname, request?.email))
 
-        return createSuccessWithData(ProfileResponseMessage.SUCCESS_UPDATE_PROFILE.msg)
+        return createSuccessWithData(ResponseMessage.SUCCESS_UPDATE_PROFILE.msg)
     }
 }

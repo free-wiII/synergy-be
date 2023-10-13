@@ -46,6 +46,7 @@ class Profile(
 
     fun update(request: ProfileUpdateParam) {
         request.nickname?.let { this.nickname = it }
+        request.email?.let { this.email = it }
     }
 
     fun toProfileDetailResponse() = ProfileDetailResponse(

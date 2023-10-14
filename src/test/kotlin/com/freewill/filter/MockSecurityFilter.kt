@@ -1,7 +1,7 @@
 package com.freewill.filter
 
-import com.freewill.domain.user.entity.User
-import com.freewill.domain.user.entity.enums.Provider
+import com.freewill.entity.User
+import com.freewill.enums.Provider
 import com.freewill.security.oauth.util.PrincipalUser
 import jakarta.servlet.Filter
 import jakarta.servlet.FilterChain

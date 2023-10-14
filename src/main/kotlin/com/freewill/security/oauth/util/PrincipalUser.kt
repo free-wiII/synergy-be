@@ -1,6 +1,6 @@
 package com.freewill.security.oauth.util
 
-import com.freewill.domain.user.entity.User
+import com.freewill.entity.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

@@ -7,25 +7,29 @@ import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import org.hibernate.annotations.DynamicUpdate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 
 @Entity
-@Table(name = "regions")
+@Table(name = "cafe_images")
+@DynamicUpdate
 @EntityListeners(AuditingEntityListener::class)
-class Region(
-    si: String,
-    gu: String,
+class CafeImage(
+    uri: String,
+    cafe: Cafe
 ) {
     @Id
-    @Column(name = "region_id")
+    @Column(name = "cafe_image_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null
 
-    @Column(name = "si", nullable = false)
-    private var si: String = si
+    @Column(name = "uri")
+     var uri: String = uri
 
-    @Column(name = "gu", nullable = false)
-    private var gu: String = gu
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cafe_id", referencedColumnName = "cafe_id")
+    private var cafe: Cafe = cafe
 }

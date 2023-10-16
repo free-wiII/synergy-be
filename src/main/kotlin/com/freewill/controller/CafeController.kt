@@ -21,7 +21,7 @@ class CafeController(
 
     @PostMapping
     fun register(@RequestPart(value = "images", required = false) images: List<MultipartFile>,
-                 @RequestPart(value = "") request: CafeCreateRequest): ApiResponse<Void> {
+                 @RequestPart(value = "cafeCreateRequest") request: CafeCreateRequest): ApiResponse<Void> {
         cafeService.save(request.toParam(images))
         return ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_CAFE.msg)
     }

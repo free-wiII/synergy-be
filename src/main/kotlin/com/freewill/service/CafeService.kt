@@ -2,7 +2,7 @@ package com.freewill.service
 
 import com.freewill.dto.param.CafeCreateParam
 import com.freewill.entity.Cafe
-import com.freewill.repository.CafeRepository
+import com.freewill.repository.jpa.CafeRepository
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

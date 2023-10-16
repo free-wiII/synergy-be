@@ -1,4 +1,4 @@
-package com.freewill.repository
+package com.freewill.repository.jpa
 
 import com.freewill.entity.Profile
 import com.freewill.entity.User

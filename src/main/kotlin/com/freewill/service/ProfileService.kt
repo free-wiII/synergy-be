@@ -3,7 +3,7 @@ package com.freewill.service
 import com.freewill.dto.param.ProfileCreateParam
 import com.freewill.dto.param.ProfileUpdateParam
 import com.freewill.entity.Profile
-import com.freewill.repository.ProfileRepository
+import com.freewill.repository.jpa.ProfileRepository
 import com.freewill.entity.User
 import com.freewill.s3.S3Uploader
 import com.freewill.s3.dto.S3UploadRequest

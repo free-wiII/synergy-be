@@ -3,7 +3,7 @@ package com.freewill.domain.service
 import com.freewill.dto.param.OAuth2Param
 import com.freewill.entity.User
 import com.freewill.enums.Provider
-import com.freewill.repository.UserRepository
+import com.freewill.repository.jpa.UserRepository
 import com.freewill.service.UserService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows

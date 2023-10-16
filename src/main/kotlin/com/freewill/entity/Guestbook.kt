@@ -21,9 +21,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 class Guestbook(
     user: User,
     cafe: Cafe,
-    content: String,
-    recommendation: Boolean,
-    reviews: MutableList<Review>,
+    content: String
 ) {
     @Id
     @Column(name = "guestbook_id")
@@ -32,9 +30,6 @@ class Guestbook(
 
     @Column(name = "content", nullable = false)
     private var content: String = content
-
-    @Column(name = "recommendation")
-    private var recommendation: Boolean = recommendation
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
@@ -45,5 +40,5 @@ class Guestbook(
     private var cafe: Cafe = cafe
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "guestbook")
-    private var reviews: MutableList<Review> = reviews
+    private var reviews: MutableList<Review> = mutableListOf()
 }

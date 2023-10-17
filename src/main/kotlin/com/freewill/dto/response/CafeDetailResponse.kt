@@ -5,5 +5,6 @@ data class CafeDetailResponse(
     val name: String,
     val content: String?,
     val address: String,
-    val reviewUri: String?
+    val reviewUri: String?,
+    val guestbooks: List<GuestbookSimpleResponse>
 )

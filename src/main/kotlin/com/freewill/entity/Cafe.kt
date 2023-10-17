@@ -1,6 +1,7 @@
 package com.freewill.entity
 
 import com.freewill.dto.response.CafeDetailResponse
+import com.freewill.dto.response.GuestbookSimpleResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners
@@ -55,11 +56,12 @@ class Cafe(
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
     private val images: MutableList<CafeImage> = mutableListOf()
 
-    fun toCafeDetailResponse() = CafeDetailResponse(
+    fun toCafeDetailResponse(guestbooks: List<GuestbookSimpleResponse>) = CafeDetailResponse(
         imageUris = images.stream().map { it.uri }.toList(),
         name = name,
         content = content,
         address = address,
-        reviewUri = reviewUri
+        reviewUri = reviewUri,
+        guestbooks = guestbooks
     )
 }

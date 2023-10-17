@@ -27,10 +27,10 @@ class CafeController(
     }
 
     @GetMapping("/{id}")
-    fun modify(@PathVariable id: Long): ApiResponse<CafeDetailResponse> {
+    fun details(@PathVariable id: Long): ApiResponse<CafeDetailResponse> {
         return ApiResponse.createSuccessWithData(
             ResponseMessage.SUCCESS_SEARCH_CAFE.msg,
-            cafeService.findById(id).toCafeDetailResponse()
+            cafeService.findCafeDetail(id)
         )
     }
 }

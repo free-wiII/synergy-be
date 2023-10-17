@@ -12,6 +12,7 @@ data class GuestbookCreateRequest(
     fun toParam(user: User, cafe: Cafe): GuestbookCreateParam = GuestbookCreateParam(
         user = user,
         cafe = cafe,
-        content = content
+        content = content,
+        reviews = reviews
     )
 }

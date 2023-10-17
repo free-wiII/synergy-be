@@ -3,13 +3,11 @@ package com.freewill.service
 import com.freewill.dto.param.ReviewCreateParam
 import com.freewill.repository.jpa.ReviewRepository
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class ReviewService(
     private val reviewRepository: ReviewRepository
 ) {
-    @Transactional
     fun saveAll(params: List<ReviewCreateParam>) {
         reviewRepository.saveAll(params.map { it.toEntity() }.toList())
     }

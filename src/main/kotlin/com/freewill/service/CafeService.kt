@@ -3,6 +3,7 @@ package com.freewill.service
 import com.freewill.dto.param.CafeCreateParam
 import com.freewill.dto.response.CafeDetailResponse
 import com.freewill.dto.response.GuestbookSimpleResponse
+import com.freewill.dto.response.ReviewAvgResponse
 import com.freewill.entity.Cafe
 import com.freewill.repository.jpa.CafeRepository
 import jakarta.persistence.EntityNotFoundException
@@ -12,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class CafeService(
     private val cafeRepository: CafeRepository,
-    private val guestbookService: GuestbookService
+    private val guestbookService: GuestbookService,
+    private val reviewService: ReviewService
 ) {
     @Transactional
     fun save(cafeCreateParam: CafeCreateParam) {
@@ -23,11 +25,12 @@ class CafeService(
     fun findCafeDetail(id: Long): CafeDetailResponse {
         val cafe: Cafe = cafeRepository.findById(id)
             .orElseThrow { EntityNotFoundException() }
-
         val guestbooks = guestbookService.findByCafe(id, false).guestbooks;
-        return cafe.toCafeDetailResponse(guestbooks)
+        val reviews: List<ReviewAvgResponse> = reviewService.findReviewAvg(id);
+
+        return cafe.toCafeDetailResponse(reviews, guestbooks)
     }
 
-    fun findById(id: Long) = cafeRepository.findById(id)
+    fun findById(id: Long): Cafe = cafeRepository.findById(id)
         .orElseThrow { EntityNotFoundException() }
 }

@@ -1,7 +1,8 @@
 package com.freewill.security.oauth.util
 
-import com.freewill.domain.user.entity.User
+import com.freewill.entity.User
 import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.oauth2.core.oidc.OidcIdToken
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo
@@ -10,8 +11,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User
 
 class PrincipalUser(
     private val user: User,
-    private val attribute: MutableMap<String, Any>,
-    private val authorities: MutableCollection<out GrantedAuthority>,
+    private val attribute: MutableMap<String, Any>
 ) : UserDetails, OidcUser, OAuth2User {
 
     fun getUser(): User = user
@@ -20,7 +20,8 @@ class PrincipalUser(
 
     override fun getAttributes(): MutableMap<String, Any> = attribute
 
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = authorities
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> =
+        mutableListOf(SimpleGrantedAuthority(user.role.toString()))
 
     override fun getUsername(): String = user.providerNickname
 

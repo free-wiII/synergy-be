@@ -14,7 +14,7 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
     kotlin("kapt") version "1.6.10"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+//    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 
     id("checkstyle")
     id("jacoco")
@@ -108,6 +108,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("io.findify:s3mock_2.13:0.2.6")
+    testImplementation("org.springframework.security:spring-security-test")
 
     // spring rest docs
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")

@@ -1,0 +1,84 @@
+= Synergy API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels:2
+:sectlinks:
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+== Auth
+
+=== 회원가입
+
+==== Request
+
+include::{snippets}/sign-up/http-request.adoc[]
+
+1) image (Optional)
+
+include::{snippets}/sign-up/request-part-image-body.adoc[]
+
+2) signUpRequest
+
+include::{snippets}/sign-up/request-part-signUpRequest-fields.adoc[]
+
+==== Response
+
+include::{snippets}/sign-up/http-response.adoc[]
+include::{snippets}/sign-up/response-fields.adoc[]
+
+=== 로그인
+
+==== Request
+
+include::{snippets}/sign-in/http-request.adoc[]
+
+include::{snippets}/sign-in/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/sign-in/http-response.adoc[]
+
+include::{snippets}/sign-in/response-fields.adoc[]
+
+== Profile
+
+=== 조회
+
+==== Request
+
+include::{snippets}/profile-detail/http-request.adoc[]
+
+1) Header
+include::{snippets}/profile-detail/request-headers.adoc[]
+
+==== Response
+
+include::{snippets}/profile-detail/http-response.adoc[]
+
+include::{snippets}/profile-detail/response-fields.adoc[]
+
+=== 수정
+
+==== Request
+
+include::{snippets}/profile-modify/http-request.adoc[]
+
+1) Header
+include::{snippets}/profile-modify/request-headers.adoc[]
+
+2) image (optional)
+include::{snippets}/profile-modify/request-part-image-body.adoc[]
+
+3) profileUpdateRequest
+include::{snippets}/profile-modify/request-part-profileUpdateRequest-fields.adoc[]
+
+==== Response
+
+include::{snippets}/profile-modify/http-response.adoc[]
+
+include::{snippets}/profile-modify/response-fields.adoc[]

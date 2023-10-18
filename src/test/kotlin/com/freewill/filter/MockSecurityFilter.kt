@@ -1,7 +1,7 @@
 package com.freewill.filter
 
-import com.freewill.domain.user.entity.User
-import com.freewill.domain.user.entity.enums.Provider
+import com.freewill.entity.User
+import com.freewill.enums.Provider
 import com.freewill.security.oauth.util.PrincipalUser
 import jakarta.servlet.Filter
 import jakarta.servlet.FilterChain
@@ -26,13 +26,10 @@ class MockSecurityFilter : Filter {
         chain: FilterChain
     ) {
         val context: SecurityContext = SecurityContextHolder.getContext()
-        val principalUser = PrincipalUser(createMember(), mutableMapOf(), mutableListOf())
-        val authentication = UsernamePasswordAuthenticationToken(
-            principalUser, principalUser.password,
-            principalUser.authorities
-        )
 
-        context.authentication = authentication
+        val principalUser = PrincipalUser(createMember(), mutableMapOf())
+        context.authentication = UsernamePasswordAuthenticationToken(principalUser, "", principalUser.authorities)
+
         chain.doFilter(request, response)
     }
 

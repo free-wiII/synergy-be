@@ -1,7 +1,7 @@
 package com.freewill.security.jwt.dto
 
-import com.freewill.domain.user.dto.response.AuthResponse
-import com.freewill.domain.user.entity.User
+import com.freewill.dto.response.AuthResponse
+import com.freewill.entity.User
 
 data class JwtToken(
     val accessToken: String,

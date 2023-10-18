@@ -1,7 +1,7 @@
 package com.freewill.security.oauth.factory
 
-import com.freewill.domain.user.entity.enums.Provider
-import com.freewill.global.common.exception.BadRequestException
+import com.freewill.enums.Provider
+import com.freewill.common.exception.BadRequestException
 import com.freewill.security.oauth.service.AppleAuthService
 import com.freewill.security.oauth.service.GoogleAuthService
 import com.freewill.security.oauth.service.KakaoAuthService

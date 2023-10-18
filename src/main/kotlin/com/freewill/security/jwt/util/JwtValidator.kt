@@ -2,8 +2,8 @@ package com.freewill.security.jwt.util
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.freewill.domain.user.entity.User
-import com.freewill.domain.user.service.UserService
+import com.freewill.entity.User
+import com.freewill.service.UserService
 import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
 import io.jsonwebtoken.Claims
@@ -32,14 +32,15 @@ class JwtValidator(
 
     @Throws(JsonProcessingException::class)
     fun parseHeaders(token: String): Map<String, String> {
-        val header = token.split("\\.")[0]
+        val header = token.split(".")[0]
+        
         return ObjectMapper().readValue(
             decodeHeader(header),
             MutableMap::class.java
         ) as Map<String, String>
     }
 
-    fun decodeHeader(token: String?): String? {
+    fun decodeHeader(token: String): String {
         return String(Base64.getDecoder().decode(token), StandardCharsets.UTF_8)
     }
 

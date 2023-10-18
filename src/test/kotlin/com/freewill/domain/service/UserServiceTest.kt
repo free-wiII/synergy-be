@@ -1,10 +1,10 @@
 package com.freewill.domain.service
 
-import com.freewill.domain.user.dto.param.OAuth2Param
-import com.freewill.domain.user.entity.User
-import com.freewill.domain.user.entity.enums.Provider
-import com.freewill.domain.user.repository.UserRepository
-import com.freewill.domain.user.service.UserService
+import com.freewill.dto.param.OAuth2Param
+import com.freewill.entity.User
+import com.freewill.enums.Provider
+import com.freewill.repository.jpa.UserRepository
+import com.freewill.service.UserService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach

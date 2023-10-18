@@ -8,5 +8,5 @@ data class RecommendationUpdateParam(
     val user: User,
     val cafeId: Long
 ) {
-    fun toEntity(cafe: Cafe): Recommendation = Recommendation(cafe, user)
+    fun toCreateParam(cafe: Cafe): RecommendationCreateParam = RecommendationCreateParam(cafe, user)
 }

@@ -1,5 +1,6 @@
 package com.freewill.service
 
+import com.freewill.dto.param.RecommendationCreateParam
 import com.freewill.dto.param.RecommendationUpdateParam
 import com.freewill.entity.Cafe
 import com.freewill.entity.Recommendation
@@ -16,14 +17,13 @@ class RecommendationService(
     @Transactional
     fun update(param: RecommendationUpdateParam) {
         val cafe: Cafe = cafeService.findById(param.cafeId)
-        val recommendation: Recommendation = findByUserAndCafe(param.user, cafe)?.apply {
-            save(param.toEntity(cafe))
-        }
+        val recommendation: Recommendation = findByUserAndCafe(param.user, cafe) ?: save(param.toCreateParam(cafe))
 
+        recommendation.updateFlag()
     }
 
     @Transactional
-    fun save(): Recommendation =
+    fun save(param: RecommendationCreateParam): Recommendation = recommendationRepository.save(param.toEntity())
 
     @Transactional(readOnly = true)
     fun findByUserAndCafe(user: User, cafe: Cafe): Recommendation? {

@@ -55,6 +55,9 @@ class Cafe(
     private val guestbooks: MutableList<Guestbook> = mutableListOf()
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
+    private val recommendations: MutableList<Recommendation> = mutableListOf()
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
     private val images: MutableList<CafeImage> = mutableListOf()
 
     fun toCafeDetailResponse(reviews: List<ReviewAvgResponse>, guestbooks: List<GuestbookSimpleResponse>) =
@@ -64,6 +67,7 @@ class Cafe(
             content = content,
             address = address,
             reviewUri = reviewUri,
+            recommendationCount = recommendations.count { it.flag },
             reviews = reviews,
             guestbooks = guestbooks
         )

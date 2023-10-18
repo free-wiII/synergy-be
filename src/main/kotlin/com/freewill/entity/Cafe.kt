@@ -1,5 +1,8 @@
 package com.freewill.entity
 
+import com.freewill.dto.response.CafeDetailResponse
+import com.freewill.dto.response.GuestbookSimpleResponse
+import com.freewill.dto.response.ReviewAvgResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners
@@ -7,8 +10,6 @@ import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import org.hibernate.annotations.DynamicUpdate
@@ -23,11 +24,9 @@ class Cafe(
     name: String,
     content: String?,
     address: String,
-    imageUri: String?,
     reviewUri: String?,
     latitude: BigDecimal,
     longitude: BigDecimal,
-    region: Region,
 ) {
     @Id
     @Column(name = "cafe_id")
@@ -43,9 +42,6 @@ class Cafe(
     @Column(name = "address", nullable = false)
     private var address: String = address
 
-    @Column(name = "image_uri")
-    private var imageUri: String? = imageUri
-
     @Column(name = "review_uri")
     private var reviewUri: String? = reviewUri
 
@@ -58,7 +54,21 @@ class Cafe(
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
     private val guestbooks: MutableList<Guestbook> = mutableListOf()
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id", referencedColumnName = "region_id")
-    private var region: Region = region
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
+    private val recommendations: MutableList<Recommendation> = mutableListOf()
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
+    private val images: MutableList<CafeImage> = mutableListOf()
+
+    fun toCafeDetailResponse(reviews: List<ReviewAvgResponse>, guestbooks: List<GuestbookSimpleResponse>) =
+        CafeDetailResponse(
+            imageUris = images.stream().map { it.uri }.toList(),
+            name = name,
+            content = content,
+            address = address,
+            reviewUri = reviewUri,
+            recommendationCount = recommendations.count { it.flag },
+            reviews = reviews,
+            guestbooks = guestbooks
+        )
 }

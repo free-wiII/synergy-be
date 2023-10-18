@@ -20,11 +20,8 @@ import org.springframework.web.multipart.MultipartFile
 @RequestMapping("/api/v1/auth")
 class AuthController(private val authService: AuthService) {
     @PostMapping("/sign-up")
-    fun signUp(
-        @RequestPart(value = "image", required = false) image: MultipartFile?,
-        @RequestPart(value = "signUpRequest") signUpRequest: SignUpRequest,
-    ): ApiResponse<AuthResponse> {
-        val jwtToken: JwtToken = authService.register(UserRegisterParam(image, signUpRequest))
+    fun signUp(@RequestBody signUpRequest: SignUpRequest): ApiResponse<AuthResponse> {
+        val jwtToken: JwtToken = authService.register(UserRegisterParam(signUpRequest))
 
         return createSuccessWithData(
             ResponseMessage.SUCCESS_SIGN_UP.msg,

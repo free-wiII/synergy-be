@@ -2,7 +2,7 @@ package com.freewill.service
 
 import com.freewill.dto.param.OAuth2Param
 import com.freewill.entity.User
-import com.freewill.repository.UserRepository
+import com.freewill.repository.jpa.UserRepository
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

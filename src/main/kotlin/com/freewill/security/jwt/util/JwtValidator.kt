@@ -32,14 +32,15 @@ class JwtValidator(
 
     @Throws(JsonProcessingException::class)
     fun parseHeaders(token: String): Map<String, String> {
-        val header = token.split("\\.")[0]
+        val header = token.split(".")[0]
+        
         return ObjectMapper().readValue(
             decodeHeader(header),
             MutableMap::class.java
         ) as Map<String, String>
     }
 
-    fun decodeHeader(token: String?): String? {
+    fun decodeHeader(token: String): String {
         return String(Base64.getDecoder().decode(token), StandardCharsets.UTF_8)
     }
 

@@ -14,7 +14,7 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
     kotlin("kapt") version "1.6.10"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+//    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 
     id("checkstyle")
     id("jacoco")

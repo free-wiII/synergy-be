@@ -25,11 +25,7 @@ import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post
 import org.springframework.restdocs.payload.JsonFieldType
-import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
-import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
-import org.springframework.restdocs.payload.PayloadDocumentation.requestPartBody
-import org.springframework.restdocs.payload.PayloadDocumentation.requestPartFields
-import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
+import org.springframework.restdocs.payload.PayloadDocumentation.*
 import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -91,10 +87,9 @@ class AuthControllerTest : RestDocsTest() {
             .willReturn(jwtToken)
 
         val result: ResultActions = this.mockMvc.perform(
-            multipart("/api/v1/auth/sign-up")
-                .file(image)
-                .file(toMultiPartFile("signUpRequest", objectMapper.writeValueAsString(signUpRequest)))
-                .contentType("multipart/form-data")
+            post("/api/v1/auth/sign-up")
+                .content(objectMapper.writeValueAsString(signUpRequest))
+                .contentType(APPLICATION_JSON)
                 .accept(APPLICATION_JSON)
                 .characterEncoding("UTF-8")
         )
@@ -105,9 +100,7 @@ class AuthControllerTest : RestDocsTest() {
                     "sign-up",
                     getDocumentRequest(),
                     getDocumentResponse(),
-                    requestPartBody("image"),
-                    requestPartFields(
-                        "signUpRequest",
+                    requestFields(
                         fieldWithPath("provider").type(JsonFieldType.STRING).description("소셜 제공자"),
                         fieldWithPath("idToken").type(JsonFieldType.STRING).description("identity 토큰"),
                         fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),

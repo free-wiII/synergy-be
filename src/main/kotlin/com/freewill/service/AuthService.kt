@@ -30,13 +30,8 @@ class AuthService(
         val jwtToken: JwtToken = signUp(param.signUpRequest)
         val user: User = jwtToken.user
 
-        val imageUri: String? = param.image?.let {
-            s3Uploader.upload(S3UploadRequest(param.image, user.id!!))
-        }
-
         profileService.save(
             ProfileCreateParam(
-                imageUri,
                 user,
                 param.signUpRequest.name,
                 param.signUpRequest.email

@@ -6,8 +6,8 @@ data class ApiResponse<T>(
     val data: T?
 ) {
     companion object {
-        private val successStatus: String = "SUCCESS"
-        private val failStatus: String = "FAIL"
+        private const val successStatus: String = "SUCCESS"
+        private const val failStatus: String = "FAIL"
 
         fun <T> createSuccessWithData(message: String, data: T? = null): ApiResponse<T> {
             return ApiResponse<T>(successStatus, message, data)

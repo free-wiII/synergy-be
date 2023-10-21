@@ -12,7 +12,6 @@ import com.freewill.entity.User
 import com.freewill.enums.Provider
 import com.freewill.service.AuthService
 import com.freewill.security.jwt.dto.JwtToken
-import com.freewill.security.jwt.util.JwtValidator
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
@@ -22,7 +21,6 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.mock.web.MockMultipartFile
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
-import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.multipart
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation.*
@@ -34,9 +32,6 @@ class AuthControllerTest : RestDocsTest() {
 
     @MockBean
     private lateinit var authService: AuthService
-
-    @MockBean
-    private lateinit var jwtValidator: JwtValidator
 
     private val image: MockMultipartFile = getMockMultiPartFile("image")
 

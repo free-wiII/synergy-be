@@ -2,12 +2,14 @@ package com.freewill.docs
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.freewill.filter.MockSecurityFilter
+import com.freewill.security.jwt.util.JwtValidator
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.MockitoAnnotations
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.context.annotation.Import
 import org.springframework.mock.web.MockMultipartFile
 import org.springframework.restdocs.RestDocumentationContextProvider
@@ -34,6 +36,9 @@ open class RestDocsTest {
 
     @Autowired
     lateinit var mockMvc: MockMvc
+
+    @MockBean
+    private lateinit var jwtValidator: JwtValidator
 
     @BeforeEach
     fun setMockMvc(

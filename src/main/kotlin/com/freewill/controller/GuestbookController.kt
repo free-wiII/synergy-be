@@ -5,12 +5,12 @@ import com.freewill.common.response.ApiResponse
 import com.freewill.dto.request.GuestbookCreateRequest
 import com.freewill.dto.response.GuestbookListResponse
 import com.freewill.entity.Cafe
-import com.freewill.entity.Guestbook
 import com.freewill.entity.User
 import com.freewill.enums.ResponseMessage
 import com.freewill.service.CafeService
 import com.freewill.service.GuestbookService
-import com.freewill.service.ReviewService
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -23,17 +23,17 @@ import org.springframework.web.bind.annotation.RestController
 class GuestbookController(
     private val cafeService: CafeService,
     private val guestbookService: GuestbookService,
-    private val reviewService: ReviewService
 ) {
     @PostMapping
     fun register(
         @AuthorizedUser user: User,
         @RequestBody request: GuestbookCreateRequest
-    ): ApiResponse<Void> {
+    ): ResponseEntity<ApiResponse<Void>> {
         val cafe: Cafe = cafeService.findById(request.cafeId)
         guestbookService.save(request.toParam(user, cafe))
 
-        return ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_GUESTBOOK.msg)
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_GUESTBOOK.msg))
     }
 
     @GetMapping

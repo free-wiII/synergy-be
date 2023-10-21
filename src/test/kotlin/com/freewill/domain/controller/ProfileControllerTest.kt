@@ -10,7 +10,6 @@ import com.freewill.service.ProfileService
 import com.freewill.dto.param.OAuth2Param
 import com.freewill.entity.User
 import com.freewill.enums.Provider
-import com.freewill.security.jwt.util.JwtValidator
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
@@ -37,9 +36,6 @@ class ProfileControllerTest : RestDocsTest() {
 
     @MockBean
     private lateinit var profileService: ProfileService
-
-    @MockBean
-    private lateinit var jwtValidator: JwtValidator
 
     private lateinit var user: User
 

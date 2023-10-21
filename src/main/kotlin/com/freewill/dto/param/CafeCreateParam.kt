@@ -1,7 +1,6 @@
 package com.freewill.dto.param
 
 import com.freewill.entity.Cafe
-import com.freewill.entity.Region
 import org.springframework.web.multipart.MultipartFile
 import java.math.BigDecimal
 

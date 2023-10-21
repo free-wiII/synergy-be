@@ -10,7 +10,7 @@ ifndef::snippets[]
 :snippets: ./build/generated-snippets
 endif::[]
 
-== Auth
+== Auth (인증)
 
 === 회원가입
 
@@ -18,13 +18,8 @@ endif::[]
 
 include::{snippets}/sign-up/http-request.adoc[]
 
-1) image (Optional)
-
-include::{snippets}/sign-up/request-part-image-body.adoc[]
-
-2) signUpRequest
-
-include::{snippets}/sign-up/request-part-signUpRequest-fields.adoc[]
+1) signUpRequest
+include::{snippets}/sign-up/request-fields.adoc[]
 
 ==== Response
 
@@ -45,7 +40,7 @@ include::{snippets}/sign-in/http-response.adoc[]
 
 include::{snippets}/sign-in/response-fields.adoc[]
 
-== Profile
+== Profile (프로필)
 
 === 조회
 
@@ -82,3 +77,105 @@ include::{snippets}/profile-modify/request-part-profileUpdateRequest-fields.adoc
 include::{snippets}/profile-modify/http-response.adoc[]
 
 include::{snippets}/profile-modify/response-fields.adoc[]
+
+== Cafe (카페)
+
+=== 등록
+
+==== Request
+
+include::{snippets}/cafe-register/http-request.adoc[]
+
+1) Header
+include::{snippets}/cafe-register/request-headers.adoc[]
+
+2) images (optional)
+----
+List<MultipartFile> -> 이미지 리스트
+----
+
+3) cafeCreateRequest
+include::{snippets}/cafe-register/request-part-cafeCreateRequest-fields.adoc[]
+
+==== Response
+
+include::{snippets}/cafe-register/http-response.adoc[]
+
+include::{snippets}/cafe-register/response-fields.adoc[]
+
+=== 상세 조회
+
+==== Request
+
+include::{snippets}/cafe-detail/http-request.adoc[]
+
+1) Header
+include::{snippets}/cafe-detail/request-headers.adoc[]
+
+2) Path Parameter
+include::{snippets}/cafe-detail/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/cafe-detail/http-response.adoc[]
+
+include::{snippets}/cafe-detail/response-fields.adoc[]
+
+== Guestbook (방명록)
+
+=== 작성
+
+==== Request
+
+include::{snippets}/guestbook-register/http-request.adoc[]
+
+1) Header
+include::{snippets}/guestbook-register/request-headers.adoc[]
+
+2) Body
+include::{snippets}/guestbook-register/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/guestbook-register/http-response.adoc[]
+
+include::{snippets}/guestbook-register/response-fields.adoc[]
+
+=== 해당 카페 관련 다건 조회
+
+==== Request
+
+include::{snippets}/guestbook-list/http-request.adoc[]
+
+1) Header
+include::{snippets}/guestbook-list/request-headers.adoc[]
+
+2) Query Parameter
+include::{snippets}/guestbook-list/query-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/guestbook-list/http-response.adoc[]
+
+include::{snippets}/guestbook-list/response-fields.adoc[]
+
+== Recommendation (추천)
+
+=== 추천 or 추천 취소
+
+==== Request
+
+include::{snippets}/recommendation-update/http-request.adoc[]
+
+1) Header
+include::{snippets}/recommendation-update/request-headers.adoc[]
+
+2) Path Parameter
+
+include::{snippets}/recommendation-update/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/recommendation-update/http-response.adoc[]
+
+include::{snippets}/recommendation-update/response-fields.adoc[]

@@ -5,6 +5,8 @@ import com.freewill.dto.request.CafeCreateRequest
 import com.freewill.dto.response.CafeDetailResponse
 import com.freewill.enums.ResponseMessage
 import com.freewill.service.CafeService
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -20,10 +22,13 @@ class CafeController(
 ) {
 
     @PostMapping
-    fun register(@RequestPart(value = "images", required = false) images: List<MultipartFile>,
-                 @RequestPart(value = "cafeCreateRequest") request: CafeCreateRequest): ApiResponse<Void> {
+    fun register(
+        @RequestPart(value = "images", required = false) images: List<MultipartFile>?,
+        @RequestPart(value = "cafeCreateRequest") request: CafeCreateRequest
+    ): ResponseEntity<ApiResponse<Void>> {
         cafeService.save(request.toParam(images))
-        return ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_CAFE.msg)
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_CAFE.msg))
     }
 
     @GetMapping("/{id}")

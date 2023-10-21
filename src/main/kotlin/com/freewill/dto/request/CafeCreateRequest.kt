@@ -12,7 +12,7 @@ data class CafeCreateRequest(
     val latitude: BigDecimal,
     val longitude: BigDecimal,
 ) {
-    fun toParam(images: List<MultipartFile>): CafeCreateParam = CafeCreateParam(
+    fun toParam(images: List<MultipartFile>?): CafeCreateParam = CafeCreateParam(
         images = images,
         name = name,
         content = content,

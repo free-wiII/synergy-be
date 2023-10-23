@@ -26,7 +26,7 @@ class Recommendation(
     val id: Long? = null
 
     @Column(name = "flag", nullable = false)
-    var flag: Boolean = true
+    var flag: Boolean = false
 
     @ManyToOne
     @JoinColumn(name = "cafe_id", referencedColumnName = "cafe_id")

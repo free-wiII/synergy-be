@@ -49,11 +49,9 @@ class User(
     @Column(name = "provider_email")
     val providerEmail: String? = providerEmail
 
-    @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")])
-    @Column(name = "role")
-    val role: List<Role> = listOf(Role.ROLE_USER)
+    @Column(name = "role", nullable = false)
+    val role: Role = Role.ROLE_USER
 
     @Embedded
     var auditEntity: AuditEntity = AuditEntity()

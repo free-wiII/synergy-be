@@ -14,35 +14,21 @@ import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import java.util.Objects.isNull
 import javax.naming.AuthenticationException
 
 @Service
 class AuthService(
     private val userService: UserService,
-    private val profileService: ProfileService,
     private val authServiceFactory: AuthServiceFactory,
     private val principalUserConverter: PrincipalUserConverter,
     private val jwtProvider: JwtProvider,
-    private val s3Uploader: S3Uploader
 ) {
     @Transactional
-    fun register(param: UserRegisterParam): JwtToken {
-        val jwtToken: JwtToken = signUp(param.signUpRequest)
-        val user: User = jwtToken.user
-
-        profileService.save(
-            ProfileCreateParam(
-                user,
-                param.signUpRequest.name,
-                param.signUpRequest.email
-            )
-        )
-
-        return jwtToken
-    }
-
     fun signUp(request: SignUpRequest): JwtToken {
         val providerId: String = authServiceFactory.getProviderId(request.provider, request.idToken)
+        checkExistUser(providerId)
+
         val user: User = userService.save(request.toOAuth2Param(providerId))
 
         return jwtProvider.createJwtToken(getPrincipalUser(user))
@@ -56,4 +42,12 @@ class AuthService(
     }
 
     fun getPrincipalUser(user: User): PrincipalUser = principalUserConverter.toPrincipalUser(user)
+
+    fun checkExistUser(providerId: String) {
+        val user: User? = userService.findByProviderId(providerId)
+
+        if(isNull(user)) {
+            throw Exception()
+        }
+    }
 }

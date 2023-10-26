@@ -1,5 +1,6 @@
 package com.freewill.service
 
+import com.freewill.dto.param.ProfileCreateParam
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User
@@ -16,6 +17,7 @@ import javax.naming.AuthenticationException
 @Service
 class AuthService(
     private val userService: UserService,
+    private val profileService: ProfileService,
     private val authServiceFactory: AuthServiceFactory,
     private val principalUserConverter: PrincipalUserConverter,
     private val jwtProvider: JwtProvider,
@@ -26,6 +28,7 @@ class AuthService(
         checkExistUser(providerId)
 
         val user: User = userService.save(request.toOAuth2Param(providerId))
+        profileService.save(request.toProfileCreateParam(user))
 
         return jwtProvider.createJwtToken(getPrincipalUser(user))
     }

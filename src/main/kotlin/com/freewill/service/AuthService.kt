@@ -1,12 +1,8 @@
 package com.freewill.service
 
-import com.freewill.dto.param.ProfileCreateParam
-import com.freewill.dto.param.UserRegisterParam
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User
-import com.freewill.s3.S3Uploader
-import com.freewill.s3.dto.S3UploadRequest
 import com.freewill.security.jwt.dto.JwtToken
 import com.freewill.security.jwt.util.JwtProvider
 import com.freewill.security.oauth.factory.AuthServiceFactory
@@ -14,7 +10,7 @@ import com.freewill.security.oauth.util.PrincipalUser
 import com.freewill.security.oauth.util.PrincipalUserConverter
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
-import java.util.Objects.isNull
+import java.util.Objects.nonNull
 import javax.naming.AuthenticationException
 
 @Service
@@ -46,7 +42,7 @@ class AuthService(
     fun checkExistUser(providerId: String) {
         val user: User? = userService.findByProviderId(providerId)
 
-        if(isNull(user)) {
+        if(nonNull(user)) {
             throw Exception()
         }
     }

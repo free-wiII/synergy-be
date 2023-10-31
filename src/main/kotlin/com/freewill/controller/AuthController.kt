@@ -1,6 +1,6 @@
 package com.freewill.controller
 
-import com.freewill.enums.ResponseMessage
+import com.freewill.enums.SuccessMessage
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.dto.response.AuthResponse
@@ -21,7 +21,7 @@ class AuthController(private val authService: AuthService) {
         val jwtToken: JwtToken = authService.signUp(signUpRequest)
 
         return createSuccessWithData(
-            ResponseMessage.SUCCESS_SIGN_UP.msg,
+            SuccessMessage.SUCCESS_SIGN_UP.msg,
             jwtToken.toAuthResponse()
         )
     }
@@ -29,7 +29,7 @@ class AuthController(private val authService: AuthService) {
     @PostMapping("/sign-in")
     fun signIn(@RequestBody request: SignInRequest): ApiResponse<AuthResponse> {
         return createSuccessWithData(
-            ResponseMessage.SUCCESS_SIGN_IN.msg,
+            SuccessMessage.SUCCESS_SIGN_IN.msg,
             authService.signIn(request).toAuthResponse()
         )
     }

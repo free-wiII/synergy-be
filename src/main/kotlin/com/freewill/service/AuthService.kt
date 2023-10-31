@@ -1,6 +1,5 @@
 package com.freewill.service
 
-import com.freewill.dto.param.ProfileCreateParam
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User

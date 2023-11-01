@@ -10,6 +10,26 @@ ifndef::snippets[]
 :snippets: ./build/generated-snippets
 endif::[]
 
+== Presigned Url
+
+=== 업로드용 Url 발급
+
+==== Request
+
+include::{snippets}/presignedUrl-upload/http-request.adoc[]
+
+1) Header
+include::{snippets}/presignedUrl-upload/request-headers.adoc[]
+
+2) Body
+include::{snippets}/presignedUrl-upload/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/presignedUrl-upload/http-response.adoc[]
+
+include::{snippets}/presignedUrl-upload/response-fields.adoc[]
+
 == Auth (인증)
 
 === 회원가입

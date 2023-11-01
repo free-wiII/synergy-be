@@ -8,7 +8,7 @@ import com.freewill.entity.User
 import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.common.response.ApiResponse.Companion.createSuccessWithData
-import com.freewill.enums.ResponseMessage
+import com.freewill.enums.SuccessMessage
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,7 +24,7 @@ class ProfileController(
     @GetMapping
     fun searchProfile(@AuthorizedUser user: User): ApiResponse<ProfileDetailResponse> {
         return createSuccessWithData(
-            ResponseMessage.SUCCESS_SEARCH_PROFILE.msg,
+            SuccessMessage.SUCCESS_SEARCH_PROFILE.msg,
             profileService.findByUser(user).toProfileDetailResponse()
         )
     }
@@ -37,6 +37,6 @@ class ProfileController(
     ): ApiResponse<Void> {
         profileService.update(user, ProfileUpdateParam(image, request?.nickname, request?.email))
 
-        return createSuccessWithData(ResponseMessage.SUCCESS_UPDATE_PROFILE.msg)
+        return createSuccessWithData(SuccessMessage.SUCCESS_UPDATE_PROFILE.msg)
     }
 }

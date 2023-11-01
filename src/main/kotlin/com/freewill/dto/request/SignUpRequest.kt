@@ -1,6 +1,8 @@
 package com.freewill.dto.request
 
 import com.freewill.dto.param.OAuth2Param
+import com.freewill.dto.param.ProfileCreateParam
+import com.freewill.entity.User
 import com.freewill.enums.Provider
 
 data class SignUpRequest(
@@ -17,4 +19,6 @@ data class SignUpRequest(
             providerEmail = email
         )
     }
+
+    fun toProfileCreateParam(user: User) = ProfileCreateParam(user, name, email)
 }

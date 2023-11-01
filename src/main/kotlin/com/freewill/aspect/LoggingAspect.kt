@@ -57,7 +57,7 @@ class LoggingAspect(
     @AfterThrowing(value = "cut()", throwing = "exception")
     @Throws(RuntimeException::class)
     fun afterThrowingLog(joinPoint: JoinPoint?, exception: Exception) {
-        exception?.run {
+        exception.run {
             log.info("exception type = {}", exception.javaClass.simpleName)
             log.info("message value = {}", exception.message)
         }

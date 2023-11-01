@@ -4,7 +4,7 @@ import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.dto.param.RecommendationUpdateParam
 import com.freewill.entity.User
-import com.freewill.enums.ResponseMessage
+import com.freewill.enums.SuccessMessage
 import com.freewill.service.RecommendationService
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
@@ -20,6 +20,6 @@ class RecommendationController(
     fun recommendCafe(@PathVariable id: Long, @AuthorizedUser user: User): ApiResponse<Void> {
         recommendationService.update(RecommendationUpdateParam(user, id))
 
-        return ApiResponse.createSuccess(ResponseMessage.SUCCESS_UPDATE_RECOMMENDATION.msg)
+        return ApiResponse.createSuccess(SuccessMessage.SUCCESS_UPDATE_RECOMMENDATION.msg)
     }
 }

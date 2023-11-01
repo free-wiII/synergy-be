@@ -6,7 +6,7 @@ import com.freewill.dto.request.GuestbookCreateRequest
 import com.freewill.dto.response.GuestbookListResponse
 import com.freewill.entity.Cafe
 import com.freewill.entity.User
-import com.freewill.enums.ResponseMessage
+import com.freewill.enums.SuccessMessage
 import com.freewill.service.CafeService
 import com.freewill.service.GuestbookService
 import org.springframework.http.HttpStatus
@@ -33,13 +33,13 @@ class GuestbookController(
         guestbookService.save(request.toParam(user, cafe))
 
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_GUESTBOOK.msg))
+            .body(ApiResponse.createSuccess(SuccessMessage.SUCCESS_REGISTER_GUESTBOOK.msg))
     }
 
     @GetMapping
     fun list(@RequestParam(value = "cafeId") cafeId: Long): ApiResponse<GuestbookListResponse> {
         return ApiResponse.createSuccessWithData(
-            ResponseMessage.SUCCESS_SEARCH_GUESTBOOKS.msg,
+            SuccessMessage.SUCCESS_SEARCH_GUESTBOOKS.msg,
             guestbookService.findByCafe(cafeId, true)
         )
     }

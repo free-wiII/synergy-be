@@ -1,5 +1,6 @@
 package com.freewill.service
 
+import com.freewill.common.exception.AlreadyRegisterUserException
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User
@@ -45,7 +46,7 @@ class AuthService(
         val user: User? = userService.findByProviderId(providerId)
 
         if(nonNull(user)) {
-            throw Exception()
+            throw AlreadyRegisterUserException()
         }
     }
 }

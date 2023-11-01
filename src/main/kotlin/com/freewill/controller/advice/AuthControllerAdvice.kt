@@ -13,7 +13,7 @@ class AuthControllerAdvice {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(AlreadyRegisterUserException::class)
-    fun alreadyRegisterExHandler(): ApiResponse<Void> {
+    fun alreadyRegisterExHandler(exception: AlreadyRegisterUserException): ApiResponse<Void> {
         return ApiResponse.createFail(FailMessage.FAIL_ALREADY_EXIST_USER.msg)
     }
 }

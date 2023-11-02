@@ -571,14 +571,14 @@ Content-Length: 569
   "message" : "업로드용 Presigned Url 조회 성공",
   "data" : {
     "presignedUrls" : [ {
-      "presignedUrl" : "presignedUrl/cafe/test1-2023-11-01T23:53:24.020243",
-      "filename" : "test1-2023-11-01T23:53:24.020243"
+      "presignedUrl" : "presignedUrl/cafe/test1-2023-11-02T18:42:35.195842",
+      "filename" : "test1-2023-11-02T18:42:35.195842"
     }, {
-      "presignedUrl" : "presignedUrl/cafe/test2-2023-11-01T23:53:24.022100",
-      "filename" : "test2-2023-11-01T23:53:24.022100"
+      "presignedUrl" : "presignedUrl/cafe/test2-2023-11-02T18:42:35.196048",
+      "filename" : "test2-2023-11-02T18:42:35.196048"
     }, {
-      "presignedUrl" : "presignedUrl/cafe/test3-2023-11-01T23:53:24.022135",
-      "filename" : "test3-2023-11-01T23:53:24.022135"
+      "presignedUrl" : "presignedUrl/cafe/test3-2023-11-02T18:42:35.196057",
+      "filename" : "test3-2023-11-02T18:42:35.196057"
     } ],
     "totalCount" : 3
   }
@@ -1325,7 +1325,7 @@ Host: 127.0.0.1:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 901
+Content-Length: 961
 
 {
   "status" : "SUCCESS",
@@ -1337,6 +1337,8 @@ Content-Length: 901
     "address" : "21, Yangji-ro, Gwangmyeong",
     "reviewUri" : "review.uri/vhuiq?search=hqwq",
     "recommendationCount" : 12,
+    "recommendationFlag" : true,
+    "bookmarkFlag" : true,
     "reviews" : [ {
       "type" : "MOOD",
       "point" : 4.5
@@ -1428,6 +1430,16 @@ Content-Length: 901
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.recommendationCount</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">추천</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.recommendationFlag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">추천 여부</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.bookmarkFlag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">북마크 여부</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.reviews</code></p></td>
@@ -1859,7 +1871,7 @@ Content-Length: 91
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0-SNAPSHOT<br>
-Last updated 2023-11-01 23:32:48 +0900
+Last updated 2023-11-01 15:57:36 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

@@ -11,6 +11,7 @@ import com.freewill.dto.response.CafeDetailResponse
 import com.freewill.dto.response.GuestbookSimpleResponse
 import com.freewill.dto.response.ReviewAvgResponse
 import com.freewill.entity.Cafe
+import com.freewill.entity.User
 import com.freewill.enums.ReviewType
 import com.freewill.service.CafeService
 import org.junit.jupiter.api.BeforeEach
@@ -128,6 +129,8 @@ class CafeControllerTest : RestDocsTest() {
             address = "21, Yangji-ro, Gwangmyeong",
             reviewUri = "review.uri/vhuiq?search=hqwq",
             recommendationCount = 12,
+            recommendationFlag = true,
+            bookmarkFlag = true,
             reviews = listOf(
                 ReviewAvgResponse(ReviewType.MOOD, 4.5),
                 ReviewAvgResponse(ReviewType.BEVERAGE, 4.1),
@@ -142,7 +145,7 @@ class CafeControllerTest : RestDocsTest() {
                 GuestbookSimpleResponse("user3", "사람 많아")
             )
         )
-        given(cafeService.findCafeDetail(anyLong()))
+        given(cafeService.findCafeDetail(anyLong(), any(User::class.java)))
             .willReturn(response)
 
         // when
@@ -178,6 +181,9 @@ class CafeControllerTest : RestDocsTest() {
                             .optional(),
                         fieldWithPath("data.recommendationCount").type(JsonFieldType.NUMBER).description("추천")
                             .optional(),
+                        fieldWithPath("data.recommendationFlag").type(JsonFieldType.BOOLEAN).description("추천 여부")
+                            .optional(),
+                        fieldWithPath("data.bookmarkFlag").type(JsonFieldType.BOOLEAN).description("북마크 여부").optional(),
                         fieldWithPath("data.reviews").type(JsonFieldType.ARRAY).description("각 리뷰 점수들"),
                         fieldWithPath("data.reviews[].type").type(JsonFieldType.STRING).description("리뷰 타입"),
                         fieldWithPath("data.reviews[].point").type(JsonFieldType.NUMBER).description("리뷰 점수"),

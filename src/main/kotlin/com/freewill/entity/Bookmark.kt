@@ -13,7 +13,7 @@ class Bookmark(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null
 
-    @Column(name = "")
+    @Column(name = "bookmark_fl")
     private var flag: Boolean = false
 
     @ManyToOne

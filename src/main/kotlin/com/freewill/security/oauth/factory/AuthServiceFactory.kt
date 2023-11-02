@@ -1,7 +1,8 @@
 package com.freewill.security.oauth.factory
 
+import com.freewill.common.exception.SynergyException
 import com.freewill.enums.Provider
-import com.freewill.common.exception.BadRequestException
+import com.freewill.enums.ReturnCode
 import com.freewill.security.oauth.service.AppleAuthService
 import com.freewill.security.oauth.service.GoogleAuthService
 import com.freewill.security.oauth.service.KakaoAuthService
@@ -32,6 +33,6 @@ class AuthServiceFactory(
     }
 
     fun getAuthService(provider: Provider): SocialAuthService {
-        return authServiceMap[provider] ?: throw BadRequestException()
+        return authServiceMap[provider] ?: throw SynergyException(ReturnCode.WRONG_PROVIDER)
     }
 }

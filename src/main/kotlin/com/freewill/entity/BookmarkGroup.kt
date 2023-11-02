@@ -13,8 +13,8 @@ class BookmarkGroup(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null
 
-    @Column(name = "title", nullable = false)
-    private val title: String = title
+    @Column(name = "title", nullable = false, unique = true)
+    val title: String = title
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")

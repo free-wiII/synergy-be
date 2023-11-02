@@ -1,6 +1,7 @@
 package com.freewill.security.jwt.filter
 
-import com.freewill.common.exception.BearerSuffixNotExistsException
+import com.freewill.common.exception.SynergyException
+import com.freewill.enums.ReturnCode
 import com.freewill.security.jwt.util.JwtValidator
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
@@ -43,7 +44,7 @@ class JwtAuthenticationFilter(
 
     private fun replaceBearerToBlank(token: String): String {
         return if (!token.startsWith("Bearer ")) {
-            throw BearerSuffixNotExistsException()
+            throw SynergyException(ReturnCode.NOT_EXIST_BEARER_SUFFIX)
         } else {
             token.replace("Bearer ", "")
         }

@@ -3,7 +3,6 @@ package com.freewill.controller
 import com.freewill.common.response.ApiResponse
 import com.freewill.dto.request.UploadPresignedUrlRequest
 import com.freewill.dto.response.PresignedUrlListResponse
-import com.freewill.dto.response.PresignedUrlResponse
 import com.freewill.enums.SuccessMessage
 import com.freewill.service.PresignedUrlService
 import org.springframework.http.HttpStatus

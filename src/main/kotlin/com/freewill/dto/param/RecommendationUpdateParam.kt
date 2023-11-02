@@ -5,7 +5,7 @@ import com.freewill.entity.User
 
 data class RecommendationUpdateParam(
     val user: User,
-    val cafeId: Long
+    val cafe: Cafe
 ) {
-    fun toCreateParam(cafe: Cafe): RecommendationCreateParam = RecommendationCreateParam(cafe, user)
+    fun toCreateParam(): RecommendationCreateParam = RecommendationCreateParam(cafe, user)
 }

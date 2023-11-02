@@ -1,8 +1,10 @@
 package com.freewill.controller
 
+import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.dto.request.CafeCreateRequest
 import com.freewill.dto.response.CafeDetailResponse
+import com.freewill.entity.User
 import com.freewill.enums.SuccessMessage
 import com.freewill.service.CafeService
 import org.springframework.http.HttpStatus
@@ -32,10 +34,11 @@ class CafeController(
     }
 
     @GetMapping("/{id}")
-    fun details(@PathVariable id: Long): ApiResponse<CafeDetailResponse> {
+    fun details(@PathVariable id: Long,
+                @AuthorizedUser user: User?): ApiResponse<CafeDetailResponse> {
         return ApiResponse.createSuccessWithData(
             SuccessMessage.SUCCESS_SEARCH_CAFE.msg,
-            cafeService.findCafeDetail(id)
+            cafeService.findCafeDetail(id, user)
         )
     }
 }

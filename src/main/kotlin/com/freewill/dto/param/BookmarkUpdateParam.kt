@@ -4,10 +4,10 @@ import com.freewill.entity.BookmarkGroup
 import com.freewill.entity.Cafe
 
 data class BookmarkUpdateParam(
-    val cafeId: Long,
+    val cafe: Cafe,
     val bookmarkGroupId: Long
 ) {
-    fun toCreateParam(cafe: Cafe, bookmarkGroup: BookmarkGroup): BookmarkCreateParam {
+    fun toCreateParam(bookmarkGroup: BookmarkGroup): BookmarkCreateParam {
         return BookmarkCreateParam(cafe, bookmarkGroup)
     }
 }

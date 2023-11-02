@@ -8,16 +8,16 @@ import com.freewill.entity.User
 import com.freewill.repository.jpa.RecommendationRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.Objects.isNull
 
 @Service
 class RecommendationService(
-    private val cafeService: CafeService,
     private val recommendationRepository: RecommendationRepository
 ) {
     @Transactional
     fun update(param: RecommendationUpdateParam) {
-        val cafe: Cafe = cafeService.findById(param.cafeId)
-        val recommendation: Recommendation = findByUserAndCafe(param.user, cafe) ?: save(param.toCreateParam(cafe))
+        val recommendation: Recommendation = findByUserAndCafe(param.user, param.cafe)
+            ?: save(param.toCreateParam())
 
         recommendation.updateFlag()
     }
@@ -28,5 +28,10 @@ class RecommendationService(
     @Transactional(readOnly = true)
     fun findByUserAndCafe(user: User, cafe: Cafe): Recommendation? {
         return recommendationRepository.findByUserAndCafe(user, cafe)
+    }
+
+    @Transactional(readOnly = true)
+    fun existsByCafeAndUser(cafe: Cafe, user: User?): Boolean {
+        return if(isNull(user)) false else recommendationRepository.existsByCafeAndUser(cafe, user!!)
     }
 }

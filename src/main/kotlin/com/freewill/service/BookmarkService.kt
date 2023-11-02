@@ -7,25 +7,25 @@ import com.freewill.dto.response.BookmarkCafeResponse
 import com.freewill.entity.Bookmark
 import com.freewill.entity.BookmarkGroup
 import com.freewill.entity.Cafe
+import com.freewill.entity.User
 import com.freewill.repository.jpa.BookmarkRepository
 import com.freewill.repository.querydsl.BookmarkQueryRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.Objects.isNull
 
 @Service
 class BookmarkService(
-    private val cafeService: CafeService,
     private val bookmarkGroupService: BookmarkGroupService,
     private val bookmarkRepository: BookmarkRepository,
     private val bookmarkQueryRepository: BookmarkQueryRepository
 ) {
     @Transactional
     fun update(param: BookmarkUpdateParam) {
-        val cafe: Cafe = cafeService.findById(param.cafeId)
         val bookmarkGroup: BookmarkGroup = bookmarkGroupService.findById(param.bookmarkGroupId)
 
-        val bookmark: Bookmark = findByCafeAndBookmarkGroup(cafe, bookmarkGroup)
-            ?: save(param.toCreateParam(cafe, bookmarkGroup))
+        val bookmark: Bookmark = findByCafeAndBookmarkGroup(param.cafe, bookmarkGroup)
+            ?: save(param.toCreateParam(bookmarkGroup))
 
         bookmark.updateFlag()
     }
@@ -43,5 +43,10 @@ class BookmarkService(
         val bookmarkCafes: List<BookmarkCafeResponse> = bookmarkQueryRepository.findByGroupId(bookmarkGroupId)
 
         return BookmarkCafeListResponse(bookmarkCafes, bookmarkCafes.size)
+    }
+
+    @Transactional(readOnly = true)
+    fun existsByCafeAndUser(cafe: Cafe, user: User?): Boolean {
+        return if (isNull(user)) false else bookmarkQueryRepository.existsByCafeAndUser(cafe, user!!)
     }
 }

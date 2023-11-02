@@ -3,6 +3,7 @@ package com.freewill.controller
 import com.freewill.common.exception.SynergyException
 import com.freewill.common.response.ApiResponse
 import io.jsonwebtoken.JwtException
+import jakarta.persistence.PersistenceException
 import org.springframework.http.HttpStatus
 import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.HttpRequestMethodNotSupportedException
@@ -31,7 +32,8 @@ class GlobalControllerAdvice {
             MissingServletRequestParameterException::class,
             MethodArgumentTypeMismatchException::class,
             JwtException::class,
-            NamingException::class
+            NamingException::class,
+            PersistenceException::class
         ]
     )
     fun requestExceptionHandler(exception: Exception): ApiResponse<HttpStatus> {

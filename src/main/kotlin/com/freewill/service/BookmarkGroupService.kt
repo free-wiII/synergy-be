@@ -28,8 +28,6 @@ class BookmarkGroupService(
         )
     }
 
-
-
     fun findById(id: Long): BookmarkGroup {
         return bookmarkGroupRepository.findById(id).orElseThrow { EntityNotFoundException() }
     }

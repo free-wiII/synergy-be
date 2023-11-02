@@ -13,5 +13,6 @@ enum class SuccessMessage(val msg: String) {
     SUCCESS_CREATE_BOOKMARK_GROUP("북마크 그룹 생성 성공"),
     SUCCESS_SEARCH_BOOKMARK_GROUP("북마크 그룹 리스트 조회 성공"),
     SUCCESS_UPDATE_BOOKMARK_GROUP("북마크 등록 or 취소 성공"),
+    SUCCESS_SEARCH_BOOKMARK_CAFES("북마크 그룹 내 카페 리스트 조회 성공"),
     SUCCESS_GET_UPLOAD_PRESIGNED_URL("업로드용 Presigned Url 조회 성공")
 }

@@ -3,10 +3,12 @@ package com.freewill.controller
 import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.dto.request.BookmarkGroupCreateRequest
+import com.freewill.dto.response.BookmarkCafeListResponse
 import com.freewill.dto.response.BookmarkGroupListResponse
 import com.freewill.entity.User
 import com.freewill.enums.SuccessMessage
 import com.freewill.service.BookmarkGroupService
+import com.freewill.service.BookmarkService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -14,7 +16,8 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/v1/bookmark-groups")
 class BookmarkGroupController(
-    private val bookmarkGroupService: BookmarkGroupService
+    private val bookmarkGroupService: BookmarkGroupService,
+    private val bookmarkService: BookmarkService
 ) {
     @PostMapping
     fun create(
@@ -34,7 +37,10 @@ class BookmarkGroupController(
     }
 
     @GetMapping("/{id}")
-    fun detail(@PathVariable id: String) {
-
+    fun detail(@PathVariable id: Long): ApiResponse<BookmarkCafeListResponse> {
+        return ApiResponse.createFailWithData(
+            SuccessMessage.SUCCESS_SEARCH_BOOKMARK_CAFES.msg,
+            bookmarkService.findAllByBookmarkGroupId(id)
+        )
     }
 }

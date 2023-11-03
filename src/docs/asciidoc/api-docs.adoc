@@ -263,4 +263,10 @@ include::{snippets}/bookmark-group-detail/http-request.adoc[]
 include::{snippets}/bookmark-group-detail/request-headers.adoc[]
 
 2) Path
-include::{snippets}/bookmark-group-detail/
+include::{snippets}/bookmark-group-detail/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/bookmark-group-detail/http-response.adoc[]
+
+include::{snippets}/bookmark-group-detail/response-fields.adoc[]

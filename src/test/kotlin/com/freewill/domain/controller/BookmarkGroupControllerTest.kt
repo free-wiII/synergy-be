@@ -14,7 +14,6 @@ import com.freewill.service.BookmarkGroupService
 import com.freewill.service.BookmarkService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.BDDMockito.anyLong
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito
 import org.mockito.Mockito.doNothing
@@ -24,13 +23,13 @@ import org.springframework.http.MediaType
 import org.springframework.restdocs.headers.HeaderDocumentation.headerWithName
 import org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
+import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation.*
 import org.springframework.restdocs.request.RequestDocumentation.parameterWithName
 import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.test.web.servlet.ResultActions
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(BookmarkGroupController::class)
@@ -133,12 +132,12 @@ class BookmarkGroupControllerTest : RestDocsTest() {
             totalCount = 3
         )
 
-        given(bookmarkService.findAllByBookmarkGroupId(anyLong()))
+        given(bookmarkService.findAllByBookmarkGroupId(1))
             .willReturn(response)
 
         // when
         val result: ResultActions = mockMvc.perform(
-            get("/api/v1/bookmark-groups/{id}", 1)
+            get("/api/v1/bookmark-groups/{id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("Authorization", "access token")
                 .characterEncoding("UTF-8")

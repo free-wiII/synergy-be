@@ -60,7 +60,12 @@ class Cafe(
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe")
     private val images: MutableList<CafeImage> = mutableListOf()
 
-    fun toCafeDetailResponse(reviews: List<ReviewAvgResponse>, guestbooks: List<GuestbookSimpleResponse>) =
+    fun toCafeDetailResponse(
+        reviews: List<ReviewAvgResponse>,
+        guestbooks: List<GuestbookSimpleResponse>,
+        recommendationFlag: Boolean,
+        bookmarkFlag: Boolean
+    ) =
         CafeDetailResponse(
             imageUris = images.stream().map { it.uri }.toList(),
             name = name,
@@ -68,6 +73,8 @@ class Cafe(
             address = address,
             reviewUri = reviewUri,
             recommendationCount = recommendations.count { it.flag },
+            recommendationFlag = recommendationFlag,
+            bookmarkFlag = bookmarkFlag,
             reviews = reviews,
             guestbooks = guestbooks
         )

@@ -78,7 +78,7 @@ class AuthControllerTest : RestDocsTest() {
             email = email
         )
 
-        given(authService.register(any(UserRegisterParam::class.java)))
+        given(authService.signUp(any(SignUpRequest::class.java)))
             .willReturn(jwtToken)
 
         val result: ResultActions = this.mockMvc.perform(

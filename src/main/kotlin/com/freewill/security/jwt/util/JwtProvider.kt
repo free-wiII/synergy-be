@@ -14,7 +14,7 @@ class JwtProvider(
     private val key: Key,
 ) {
     companion object {
-        private const val ACCESS_TOKEN_VALIDATION_SECOND = 60L * 60 * 24 * 1000
+        private const val ACCESS_TOKEN_VALIDATION_SECOND = 60L * 60 * 24 * 1000 * 90
         private const val REFRESH_TOKEN_VALIDATION_SECOND = 60L * 60 * 24 * 1000 * 14
         private const val BEARER_TYPE = "bearer"
     }

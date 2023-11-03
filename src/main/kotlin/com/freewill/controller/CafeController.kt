@@ -1,9 +1,11 @@
 package com.freewill.controller
 
+import com.freewill.common.annotation.AuthorizedUser
 import com.freewill.common.response.ApiResponse
 import com.freewill.dto.request.CafeCreateRequest
 import com.freewill.dto.response.CafeDetailResponse
-import com.freewill.enums.ResponseMessage
+import com.freewill.entity.User
+import com.freewill.enums.SuccessMessage
 import com.freewill.service.CafeService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -28,14 +30,15 @@ class CafeController(
     ): ResponseEntity<ApiResponse<Void>> {
         cafeService.save(request.toParam(images))
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(ApiResponse.createSuccess(ResponseMessage.SUCCESS_REGISTER_CAFE.msg))
+            .body(ApiResponse.createSuccess(SuccessMessage.SUCCESS_REGISTER_CAFE.msg))
     }
 
     @GetMapping("/{id}")
-    fun details(@PathVariable id: Long): ApiResponse<CafeDetailResponse> {
+    fun details(@PathVariable id: Long,
+                @AuthorizedUser user: User?): ApiResponse<CafeDetailResponse> {
         return ApiResponse.createSuccessWithData(
-            ResponseMessage.SUCCESS_SEARCH_CAFE.msg,
-            cafeService.findCafeDetail(id)
+            SuccessMessage.SUCCESS_SEARCH_CAFE.msg,
+            cafeService.findCafeDetail(id, user)
         )
     }
 }

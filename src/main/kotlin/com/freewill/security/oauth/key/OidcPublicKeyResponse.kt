@@ -11,6 +11,6 @@ data class OidcPublicKeyResponse(val keys: List<OidcPublicKey>) {
                 key.kid == kid && key.alg == alg
             }
             .findAny()
-            .orElseThrow(Supplier<AuthenticationException> { AuthenticationException() })
+            .orElseThrow { AuthenticationException() }
     }
 }

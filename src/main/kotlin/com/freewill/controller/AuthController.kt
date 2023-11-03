@@ -1,7 +1,6 @@
 package com.freewill.controller
 
-import com.freewill.enums.ResponseMessage
-import com.freewill.dto.param.UserRegisterParam
+import com.freewill.enums.SuccessMessage
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.dto.response.AuthResponse
@@ -19,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController(private val authService: AuthService) {
     @PostMapping("/sign-up")
     fun signUp(@RequestBody signUpRequest: SignUpRequest): ApiResponse<AuthResponse> {
-        val jwtToken: JwtToken = authService.register(UserRegisterParam(signUpRequest))
+        val jwtToken: JwtToken = authService.signUp(signUpRequest)
 
         return createSuccessWithData(
-            ResponseMessage.SUCCESS_SIGN_UP.msg,
+            SuccessMessage.SUCCESS_SIGN_UP.msg,
             jwtToken.toAuthResponse()
         )
     }
@@ -30,7 +29,7 @@ class AuthController(private val authService: AuthService) {
     @PostMapping("/sign-in")
     fun signIn(@RequestBody request: SignInRequest): ApiResponse<AuthResponse> {
         return createSuccessWithData(
-            ResponseMessage.SUCCESS_SIGN_IN.msg,
+            SuccessMessage.SUCCESS_SIGN_IN.msg,
             authService.signIn(request).toAuthResponse()
         )
     }

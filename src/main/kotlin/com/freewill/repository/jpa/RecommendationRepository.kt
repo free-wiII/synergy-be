@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface RecommendationRepository : JpaRepository<Recommendation, Long> {
-    fun findByUserAndCafe(user: User, cafe: Cafe): Recommendation?;
+    fun findByUserAndCafe(user: User, cafe: Cafe): Recommendation?
+    fun existsByCafeAndUser(cafe: Cafe, user: User): Boolean
 }

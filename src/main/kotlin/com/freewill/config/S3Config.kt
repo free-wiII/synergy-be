@@ -19,6 +19,9 @@ class S3Config {
     @Value("\${cloud.aws.region.static}")
     private lateinit var region: String
 
+    @Value("\${cloud.aws.s3-bucket}")
+    lateinit var bucketName: String
+
     @Bean
     fun amazonS3Client(): AmazonS3Client {
         val basicAWSCredentials = BasicAWSCredentials(iamAccessKey, iamSecretKey)

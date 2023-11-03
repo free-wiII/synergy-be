@@ -1,8 +1,10 @@
 package com.freewill.service
 
+import com.freewill.common.exception.SynergyException
 import com.freewill.dto.request.SignInRequest
 import com.freewill.dto.request.SignUpRequest
 import com.freewill.entity.User
+import com.freewill.enums.ReturnCode
 import com.freewill.security.jwt.dto.JwtToken
 import com.freewill.security.jwt.util.JwtProvider
 import com.freewill.security.oauth.factory.AuthServiceFactory
@@ -45,7 +47,7 @@ class AuthService(
         val user: User? = userService.findByProviderId(providerId)
 
         if(nonNull(user)) {
-            throw Exception()
+            throw SynergyException(ReturnCode.DUPLICATE_USER)
         }
     }
 }

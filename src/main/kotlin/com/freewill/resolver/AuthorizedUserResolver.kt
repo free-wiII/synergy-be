@@ -10,6 +10,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
+import java.util.Objects.isNull
 
 @Component
 class AuthorizedUserResolver : HandlerMethodArgumentResolver {
@@ -24,8 +25,13 @@ class AuthorizedUserResolver : HandlerMethodArgumentResolver {
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?
     ): Any? {
-        val principalUser: PrincipalUser = SecurityContextHolder.getContext().authentication.principal as PrincipalUser
+        val authentication = SecurityContextHolder.getContext().authentication
 
+        if (isNull(authentication)) {
+            return null
+        }
+
+        val principalUser: PrincipalUser = authentication.principal as PrincipalUser
         return principalUser.getUser()
     }
 }
